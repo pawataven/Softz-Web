@@ -1,0 +1,119 @@
+.plans {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gutter);
+  margin-top: var(--space-stack);
+}
+
+.plan {
+  padding: 36px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.6s var(--ease),
+    opacity 0.4s;
+}
+
+.plan:hover {
+  transform: translateY(-8px);
+}
+
+@media (hover: hover) {
+  .plans:hover .plan:not(:hover) {
+    opacity: 0.55;
+  }
+}
+
+.plan-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 24px;
+}
+
+.plan-head .label {
+  color: var(--gray);
+}
+
+.plan h3 {
+  font: 600 20px/1.35 var(--th);
+  margin-top: 14px;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.price .v {
+  font: 600 52px/1 var(--en);
+  letter-spacing: -0.035em;
+}
+
+.price .u {
+  color: var(--gray);
+  font-size: 15px;
+}
+
+.price .f {
+  color: var(--dim);
+  font-size: 14px;
+}
+
+.was {
+  color: var(--dim);
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.plan ul {
+  list-style: none;
+  margin: 28px 0 32px;
+  padding: 28px 0 0;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.plan li {
+  display: flex;
+  gap: 12px;
+  color: #c9cace;
+  font-size: 15px;
+}
+
+.plan li::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  flex: none;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: var(--orange-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%23FF6B2B' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 16px no-repeat;
+}
+
+/* One card per row on tablet, inset one column each side so it stays on the 8-column grid. */
+@media (max-width: 1023px) {
+  .plans {
+    grid-template-columns: 1fr;
+    margin-inline: var(--col1);
+  }
+}
+
+@media (max-width: 767px) {
+  .plans {
+    margin-inline: 0;
+  }
+}

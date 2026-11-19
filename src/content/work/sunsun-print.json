@@ -1,0 +1,231 @@
+{
+  "order": 1,
+  "category": "website",
+  "title": "Sunsun Print",
+  "styles": [
+    "Bold",
+    "Editorial"
+  ],
+  "description": "เว็บไซต์ร้านป้ายและงานพิมพ์ แสดงผลงาน บริการ และช่องทางขอใบเสนอราคา ใช้งานได้ทั้งคอมและมือถือ",
+  "tags": [
+    "ออกแบบ UI",
+    "พัฒนาเว็บไซต์",
+    "รองรับมือถือ"
+  ],
+  "liveUrl": "https://sunsunprint.vercel.app",
+  "cta": {
+    "label": "อยากได้เว็บแบบนี้",
+    "lineMessage": "เห็นผลงาน Sunsun Print แล้ว อยากได้เว็บแบบนี้ ขอใบเสนอราคาครับ"
+  },
+  "art": {
+    "layout": "combo",
+    "devices": [
+      {
+        "kind": "laptop",
+        "image": "../../assets/images/screens/website-sunsun-desktop.webp",
+        "alt": "เว็บไซต์ Sunsun Print บนคอม"
+      },
+      {
+        "kind": "phone",
+        "image": "../../assets/images/screens/website-sunsun-mobile.webp",
+        "alt": "เว็บไซต์ Sunsun Print บนมือถือ"
+      }
+    ]
+  },
+  "detail": {
+    "seo": {
+      "title": "Sunsun Print — เคสเว็บไซต์ร้านป้ายและงานพิมพ์",
+      "description": "เบื้องหลังเว็บไซต์ Sunsun Print 10 หน้า ออกแบบ UI/UX และพัฒนาทั้งเว็บโดย SOFT Z DIGITAL พร้อมสรุปราคา 6,500 บาทว่าจ่ายไปกับส่วนไหนบ้าง"
+    },
+    "cover": {
+      "image": "../../assets/images/work/sunsun-print/photos/signage_p04_01.webp",
+      "alt": "ป้ายไฟ SHANGARILA และตัวอักษร SARAH ผลงานของ Sunsun Print",
+      "eyebrow": "CASE STUDY · WEBSITE",
+      "subtitle": "เว็บไซต์ร้านป้ายและงานพิมพ์ ออกแบบ UI/UX และพัฒนาทั้งเว็บ",
+      "mobileFocus": "28% 50%"
+    },
+    "statement": [
+      "งานพิมพ์ที่จับต้องได้",
+      "ควรมีหน้าร้านออนไลน์ที่ชัดพอกัน"
+    ],
+    "showcase": {
+      "kind": "desktop",
+      "image": "../../assets/images/work/sunsun-print/screens/tour-poster.webp",
+      "alt": "หน้าแรกเว็บไซต์ Sunsun Print บนคอม",
+      "video": {
+        "mp4": "/videos/work/sunsun-print-tour.mp4",
+        "webm": "/videos/work/sunsun-print-tour.webm"
+      }
+    },
+    "story": "Sunsun Print รับทำป้าย สติ๊กเกอร์ งานอีเวนต์ ดิสเพลย์ และบรรจุภัณฑ์ เราออกแบบเว็บให้ผลงานจริงของร้านเป็นตัวเล่าเรื่อง ใช้สีแดง-ขาวของร้าน ตัวหนังสือใหญ่ชัด และพาคนดูไปถึงปุ่มขอใบเสนอราคาให้เร็วที่สุด",
+    "facts": [
+      {
+        "value": "10",
+        "label": "หน้าเว็บไซต์"
+      },
+      {
+        "value": "45",
+        "label": "ผลงานในแกลเลอรี"
+      },
+      {
+        "value": "5",
+        "label": "หมวดงานพิมพ์"
+      },
+      {
+        "value": "3",
+        "label": "ขั้นตอนขอใบเสนอราคา"
+      }
+    ],
+    "chapters": [
+      {
+        "label": "01 / PORTFOLIO",
+        "title": "ผลงาน 45 ชิ้น แยก 5 หมวด",
+        "body": "แกลเลอรีกรองตามหมวดได้ทันที ทั้งงานป้าย สติ๊กเกอร์ อีเวนต์ ดิสเพลย์ และบรรจุภัณฑ์ ลูกค้าหาตัวอย่างที่ใกล้กับงานของตัวเองได้เอง",
+        "screens": [
+          {
+            "kind": "desktop",
+            "image": "../../assets/images/work/sunsun-print/screens/our-work-desktop.webp",
+            "alt": "หน้าผลงานทั้งหมดของ Sunsun Print"
+          },
+          {
+            "kind": "mobile",
+            "image": "../../assets/images/work/sunsun-print/screens/signage-mobile.webp",
+            "alt": "หน้าผลงานหมวดงานป้ายบนมือถือ"
+          }
+        ]
+      },
+      {
+        "label": "02 / SERVICES",
+        "title": "บริการที่อ่านจบในหน้าเดียว",
+        "body": "หน้าบริการสรุปวัสดุและรูปแบบงานของแต่ละหมวด เช่น อะคริลิก พลาสวูด ป้ายไฟ ไวนิล ให้ลูกค้ารู้ว่าร้านทำอะไรได้บ้างก่อนทักมาคุย",
+        "screens": [
+          {
+            "kind": "desktop",
+            "image": "../../assets/images/work/sunsun-print/screens/services-desktop.webp",
+            "alt": "หน้าบริการของ Sunsun Print"
+          },
+          {
+            "kind": "mobile",
+            "image": "../../assets/images/work/sunsun-print/screens/services-mobile.webp",
+            "alt": "หน้าบริการบนมือถือ"
+          }
+        ]
+      },
+      {
+        "label": "03 / START PROJECT",
+        "title": "ขอใบเสนอราคาใน 3 ขั้น",
+        "body": "เลือกประเภทงาน ใส่รายละเอียด แล้วกรอกช่องทางติดต่อ ยังไม่มีแบบสำเร็จก็เริ่มบรีฟได้ ร้านได้ข้อมูลครบตั้งแต่ข้อความแรก",
+        "screens": [
+          {
+            "kind": "desktop",
+            "image": "../../assets/images/work/sunsun-print/screens/start-project-desktop.webp",
+            "alt": "หน้าขอใบเสนอราคา 3 ขั้นตอน"
+          },
+          {
+            "kind": "mobile",
+            "image": "../../assets/images/work/sunsun-print/screens/start-project-mobile.webp",
+            "alt": "หน้าขอใบเสนอราคาบนมือถือ"
+          }
+        ]
+      }
+    ],
+    "mobileStrip": {
+      "title": "ทุกหน้าออกแบบให้มือถือด้วย",
+      "body": "ออกแบบหน้าจอมือถือแยกทุกหน้า ไม่ได้แค่ย่อจากหน้าคอม ตัวหนังสืออ่านง่าย ปุ่มกดง่ายบนจอเล็ก",
+      "screens": [
+        {
+          "kind": "mobile",
+          "image": "../../assets/images/work/sunsun-print/screens/home-mobile.webp",
+          "alt": "หน้าแรกบนมือถือ"
+        },
+        {
+          "kind": "mobile",
+          "image": "../../assets/images/work/sunsun-print/screens/our-work-mobile.webp",
+          "alt": "หน้าผลงานบนมือถือ"
+        },
+        {
+          "kind": "mobile",
+          "image": "../../assets/images/work/sunsun-print/screens/about-mobile.webp",
+          "alt": "หน้าเกี่ยวกับเราบนมือถือ"
+        },
+        {
+          "kind": "mobile",
+          "image": "../../assets/images/work/sunsun-print/screens/start-project-mobile.webp",
+          "alt": "หน้าขอใบเสนอราคาบนมือถือ"
+        }
+      ]
+    },
+    "photos": {
+      "label": "REAL PRINT",
+      "title": "ให้ผลงานจริงเป็นคนเล่า",
+      "body": "ภาพบนเว็บคืองานที่ร้านผลิตจริง จัดวางให้เป็นชุดเดียวกันทั้งเว็บ ทั้งงานป้าย บูธ บรรจุภัณฑ์ และดิสเพลย์",
+      "items": [
+        {
+          "image": "../../assets/images/work/sunsun-print/photos/event_p06_01.webp",
+          "alt": "บูธแสดงสินค้า ผลงานของ Sunsun Print"
+        },
+        {
+          "image": "../../assets/images/work/sunsun-print/photos/box_p03_02.webp",
+          "alt": "กล่องเครื่องสำอางและสกินแคร์ ผลงานของ Sunsun Print"
+        },
+        {
+          "image": "../../assets/images/work/sunsun-print/photos/signage_p06_01.webp",
+          "alt": "สติ๊กเกอร์ติดพื้น ผลงานของ Sunsun Print"
+        },
+        {
+          "image": "../../assets/images/work/sunsun-print/photos/display_p02_03.webp",
+          "alt": "ดิสเพลย์ตั้งโต๊ะพลาสวูด ผลงานของ Sunsun Print"
+        },
+        {
+          "image": "../../assets/images/work/sunsun-print/photos/bag_p02_02.webp",
+          "alt": "ถุงกระดาษพิมพ์ลาย ผลงานของ Sunsun Print"
+        },
+        {
+          "image": "../../assets/images/work/sunsun-print/photos/signage_p05_01.webp",
+          "alt": "ป้ายไวนิล Oh! Juice ผลงานของ Sunsun Print"
+        }
+      ]
+    },
+    "pricing": {
+      "total": 6500,
+      "title": "จบที่ 6,500 บาท",
+      "intro": "ลูกค้าจ่ายแบบเหมารวมทั้งโปรเจกต์ ตารางนี้แจกแจงให้เห็นว่าเงินแต่ละส่วนไปอยู่กับงานอะไร",
+      "items": [
+        {
+          "name": "วางโครงเว็บและ UX",
+          "detail": "Sitemap 10 หน้า ลำดับเนื้อหา และเส้นทางจากหน้าแรกไปถึงการขอใบเสนอราคา",
+          "amount": 800
+        },
+        {
+          "name": "ออกแบบ UI ทั้งเว็บ",
+          "detail": "ออกแบบทุกหน้า ทั้งจอคอมและมือถือ ตาม CI แดง-ขาวของร้าน",
+          "amount": 2000
+        },
+        {
+          "name": "พัฒนาเว็บไซต์ 10 หน้า",
+          "detail": "เขียนเว็บจริงด้วย Nuxt รองรับทุกขนาดจอ พร้อมแอนิเมชันตอนเลื่อน",
+          "amount": 2200
+        },
+        {
+          "name": "แกลเลอรีผลงานและฟอร์มขอราคา",
+          "detail": "ผลงาน 45 ชิ้นกรองตาม 5 หมวด และฟอร์มขอใบเสนอราคา 3 ขั้นตอน",
+          "amount": 900
+        },
+        {
+          "name": "SEO พื้นฐานและขึ้นเว็บ",
+          "detail": "ตั้งชื่อหน้าและคำอธิบายทุกหน้า ขึ้นระบบบน Vercel และทดสอบก่อนส่งมอบ",
+          "amount": 600
+        }
+      ],
+      "notes": [
+        "ยังไม่รวมค่าโดเมน ลูกค้ายังเลือกชื่อไม่ได้ ระหว่างนี้ใช้ sunsunprint.vercel.app ไปก่อน",
+        "ภาพผลงานทั้งหมดเป็นของร้าน Sunsun Print"
+      ]
+    },
+    "stack": [
+      "Figma",
+      "Nuxt",
+      "Vercel"
+    ]
+  }
+}

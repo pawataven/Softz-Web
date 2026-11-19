@@ -1,0 +1,160 @@
+{
+  "order": 3,
+  "category": "service",
+  "status": "available",
+  "label": "UI/UX DESIGN",
+  "englishName": "UI/UX Design",
+  "navLabel": "ออกแบบ UI/UX",
+  "navDescription": "ไฟล์ Figma พร้อมพัฒนาต่อ",
+  "seo": {
+    "title": "ออกแบบ UI/UX",
+    "description": "ออกแบบอย่างเดียว ส่งไฟล์ Figma ให้ทีมของคุณพัฒนาต่อได้ทันที"
+  },
+  "summary": {
+    "title": "ออกแบบ UI/UX",
+    "description": "ส่งไฟล์ Figma ให้ทีมคุณพัฒนาต่อ จ้างพัฒนาต่อ หักค่าออกแบบ 50%"
+  },
+  "startingPrice": {
+    "prefix": "เริ่ม",
+    "amount": 2900,
+    "unit": "บาท"
+  },
+  "hero": {
+    "heading": [
+      "ออกแบบเสร็จ",
+      "พร้อมพัฒนาต่อ"
+    ],
+    "subtitle": [
+      "ออกแบบอย่างเดียว ส่งไฟล์ Figma",
+      "ให้ทีมของคุณพัฒนาต่อได้ทันที"
+    ],
+    "priceFrom": "เริ่ม 2,900 บาท",
+    "primaryCta": {
+      "label": "ขอใบเสนอราคา",
+      "lineMessage": "สนใจออกแบบ UI/UX ขอใบเสนอราคาครับ"
+    },
+    "secondaryCtaLabel": "ดูแพ็กเกจ",
+    "stage": {
+      "layout": "trio",
+      "devices": [
+        {
+          "kind": "phone",
+          "image": "../../assets/images/screens/crm-member-rewards.webp",
+          "alt": "งานออกแบบหน้า Rewards"
+        },
+        {
+          "kind": "phone",
+          "image": "../../assets/images/screens/crm-member-card.webp",
+          "alt": "งานออกแบบหน้าบัตรสมาชิก"
+        },
+        {
+          "kind": "phone",
+          "image": "../../assets/images/screens/crm-member-order-entry.webp",
+          "alt": "งานออกแบบหน้ากรอกคำสั่งซื้อ"
+        }
+      ]
+    }
+  },
+  "features": {
+    "intro": "ออกแบบกับเราแล้วจ้างพัฒนาต่อ หักค่าออกแบบ 50%",
+    "items": [
+      {
+        "title": "ไฟล์ Figma",
+        "description": "ส่งไฟล์ให้ทีมคุณพัฒนาต่อได้ทันที"
+      },
+      {
+        "title": "Prototype",
+        "description": "แพ็กเกจ Premium มีต้นแบบให้กดทดลอง"
+      },
+      {
+        "title": "แก้ได้ 2 รอบ",
+        "description": "ทุกแพ็กเกจแก้ได้ 2 รอบ"
+      },
+      {
+        "title": "ส่งงานเร็ว",
+        "description": "5–20 วัน ตามจำนวนหน้า"
+      },
+      {
+        "title": "หน้าเพิ่ม 990 บาท",
+        "description": "เพิ่มหน้าได้ตามที่ต้องการ"
+      },
+      {
+        "title": "จ้างพัฒนาต่อคุ้มกว่า",
+        "description": "หักค่าออกแบบ 50% จากราคาเว็บ"
+      }
+    ]
+  },
+  "plans": [
+    {
+      "tag": "LANDING DESIGN",
+      "name": "ออกแบบ 1 หน้า",
+      "price": 2900,
+      "unit": "บาท",
+      "compareAtPrice": 4900,
+      "featured": false,
+      "items": [
+        "ไฟล์ Figma 1 หน้า",
+        "ส่งงาน 5 วัน",
+        "แก้ 2 รอบ"
+      ],
+      "cta": {
+        "label": "เลือกแพ็กเกจนี้",
+        "lineMessage": "สนใจ Landing Design 2,900 บาท ขอใบเสนอราคาครับ"
+      }
+    },
+    {
+      "tag": "BUSINESS DESIGN",
+      "name": "ออกแบบ 3–5 หน้า",
+      "price": 7900,
+      "unit": "บาท",
+      "compareAtPrice": 14900,
+      "featured": false,
+      "items": [
+        "ไฟล์ Figma 3–5 หน้า",
+        "ส่งงาน 10 วัน",
+        "แก้ 2 รอบ"
+      ],
+      "cta": {
+        "label": "เลือกแพ็กเกจนี้",
+        "lineMessage": "สนใจ Business Design 7,900 บาท ขอใบเสนอราคาครับ"
+      }
+    },
+    {
+      "tag": "PREMIUM UI/UX",
+      "name": "ออกแบบ 6–10 หน้า + Prototype",
+      "price": 14900,
+      "unit": "บาท",
+      "compareAtPrice": 29900,
+      "badge": "แนะนำ",
+      "featured": true,
+      "items": [
+        "ไฟล์ Figma 6–10 หน้า + Prototype",
+        "ส่งงาน 15–20 วัน",
+        "แก้ 2 รอบ"
+      ],
+      "cta": {
+        "label": "เลือกแพ็กเกจนี้",
+        "lineMessage": "สนใจ Premium UI/UX 14,900 บาท ขอใบเสนอราคาครับ"
+      }
+    }
+  ],
+  "plansNote": "เว็บสองภาษา +30% · งานด่วน +30% · งานนอกขอบเขต 500 บาท/ชั่วโมง · ราคายังไม่รวมภาษีมูลค่าเพิ่ม",
+  "faq": [
+    {
+      "question": "ได้ไฟล์อะไรบ้าง?",
+      "answer": "ไฟล์ Figma ที่ทีมพัฒนาเปิดใช้ต่อได้ทันที"
+    },
+    {
+      "question": "ถ้าจ้าง SOFT Z พัฒนาต่อ?",
+      "answer": "หักค่าออกแบบ 50% ออกจากราคาแพ็กเกจเว็บไซต์"
+    },
+    {
+      "question": "งานด่วนได้ไหม?",
+      "answer": "ได้ ใช้เวลาครึ่งหนึ่งของปกติ คิดเพิ่ม 30%"
+    },
+    {
+      "question": "ราคารวม VAT แล้วหรือยัง?",
+      "answer": "ยังไม่รวมภาษีมูลค่าเพิ่ม"
+    }
+  ]
+}

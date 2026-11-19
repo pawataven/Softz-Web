@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets';
+import mark from '../../../assets/images/brand/softz-mark.png';
+import { PACKAGE_CATALOG } from '../../../data/package-catalog';
+import { lineMessageUrl } from '../../../lib/line';
+import SectionHeading from '../../ui/SectionHeading.astro';
+
+const initialQuery = 'อยากได้ระบบรับจองให้คาเฟ่';
+const catalogJson = JSON.stringify(PACKAGE_CATALOG).replace(/</g, '\\u003c');
+---
+
+<section class="section" aria-labelledby="finder-heading">
+  <div class="container-page">
+    <SectionHeading
+      label="FIND YOUR PACKAGE"
+      heading="บอกเราว่าต้องการอะไร"
+      sub="พิมพ์สิ่งที่ธุรกิจต้องการ แล้วเลือกแพ็กเกจที่ตรงได้เลย"
+      center
+      id="finder-heading"
+    />
+    <div class="page-grid">
+      <div class="cmd panel reveal" data-finder>
+        <div class="cmd-input">
+          <Image src={mark} alt="" height={20} width={Math.round((mark.width / mark.height) * 20)} layout="fixed" />
+          <label for="finder-query" class="sr-only">ค้นหาแพ็กเกจ</label>
+          <input
+            id="finder-query"
+            type="search"
+            value={initialQuery}
+            placeholder="เช่น เว็บร้านอาหาร, ระบบสมาชิก, ตู้ถ่ายรูป"
+            role="combobox"
+            aria-expanded="true"
+            aria-controls="finder-list"
+            aria-autocomplete="list"
+            autocomplete="off"
+          />
+          <span class="kbd" aria-hidden="true">⌘K</span>
+        </div>
+        <div class="cmd-group">แพ็กเกจที่แนะนำ</div>
+        <ul class="cmd-list" id="finder-list" role="listbox" aria-label="แพ็กเกจที่ตรง"></ul>
+        <div class="cmd-foot">
+          <span data-count></span>
+          <a href={lineMessageUrl(initialQuery)} data-finder-go target="_blank" rel="noopener">ขอใบเสนอราคาทาง LINE <span class="kbd">↵</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script id="finder-catalog" type="application/json" set:html={catalogJson} />
+
+  <script>
+    import '../../../scripts/finder';
+  </script>
+</section>

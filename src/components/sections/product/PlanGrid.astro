@@ -1,0 +1,57 @@
+---
+import { formatPrice } from '../../../lib/format';
+import type { Product } from '../../../lib/products';
+import LineButton from '../../ui/LineButton.astro';
+import SectionHeading from '../../ui/SectionHeading.astro';
+
+interface Props {
+  product: Product;
+}
+
+const { plans, plansNote } = Astro.props.product.data;
+---
+
+<section class="section tone" id="plans" aria-labelledby="plans-heading">
+  <div class="container-page">
+    <SectionHeading
+      label="PLANS"
+      heading="เลือกแพ็กเกจ"
+      sub="เลือกแพ็กเกจแล้วกดปุ่ม ระบบจะเปิดแชท LINE พร้อมข้อความให้"
+      center
+      id="plans-heading"
+    />
+    <div class="plans stagger">
+      {
+        plans.map((plan) => (
+          <article class:list={['plan', 'panel', { featured: plan.featured }]}>
+            <div class="plan-head">
+              <span class="label">{plan.tag}</span>
+              {plan.badge && <span class="tag tag-orange">{plan.badge}</span>}
+            </div>
+            <h3>{plan.name}</h3>
+            <div class="price">
+              {plan.isStartingPrice && <span class="f">เริ่ม</span>}
+              <span class="v">{formatPrice(plan.price)}</span>
+              <span class="u">{plan.unit}</span>
+            </div>
+            {plan.compareAtPrice && (
+              <p class="was">
+                ปกติ <s>{formatPrice(plan.compareAtPrice)}</s>
+              </p>
+            )}
+            <div class="chips">
+              {plan.chips?.map((chip) => <span class="tag tag-gray">{chip}</span>)}
+            </div>
+            <ul>
+              {plan.items.map((item) => <li>{item}</li>)}
+            </ul>
+            <LineButton message={plan.cta.lineMessage} variant={plan.featured ? 'primary' : 'glass'} block>
+              {plan.cta.label}
+            </LineButton>
+          </article>
+        ))
+      }
+    </div>
+    <p class="note center">{plansNote}</p>
+  </div>
+</section>

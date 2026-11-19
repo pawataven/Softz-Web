@@ -1,0 +1,36 @@
+---
+import Icon, { type IconName } from '../ui/Icon.astro';
+
+export interface BentoItem {
+  title: string;
+  description: string;
+  icon?: IconName;
+}
+
+interface Props {
+  items: BentoItem[];
+  columns: 4 | 6;
+}
+
+const { items, columns } = Astro.props;
+---
+
+<div class="bento stagger">
+  {
+    items.map((item, index) => (
+      <article class={`panel b-${columns}`}>
+        {item.icon ? (
+          <span class="ic">
+            <Icon name={item.icon} />
+          </span>
+        ) : (
+          <span class="num">{String(index + 1).padStart(2, '0')}</span>
+        )}
+        <div>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </div>
+      </article>
+    ))
+  }
+</div>

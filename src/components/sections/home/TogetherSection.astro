@@ -1,0 +1,49 @@
+---
+import { TOGETHER_ITEMS } from '../../../data/home';
+import DeviceComposition from '../../ui/DeviceComposition.astro';
+import Icon from '../../ui/Icon.astro';
+import SectionHeading from '../../ui/SectionHeading.astro';
+---
+
+<section class="section tone" aria-labelledby="together-heading">
+  <div class="container-page">
+    {/* Heading sits above the list in the left column, so the devices on the right get the full screen height. */}
+    <div class="together reveal" data-together>
+      <div class="together-left">
+      <SectionHeading
+        label="BETTER TOGETHER"
+        heading="ใช้คู่กัน คุ้มกว่า"
+        sub="ใช้คู่กัน ระบบเชื่อมกัน งานหน้าร้านกับหลังบ้านจบในที่เดียว"
+        id="together-heading"
+      />
+      <div class="together-list">
+        {
+          TOGETHER_ITEMS.map((item, index) => (
+            <div class:list={['together-item', { open: index === 0 }]}>
+              <button type="button" aria-expanded={index === 0 ? 'true' : 'false'} aria-controls={`together-${item.id}`}>
+                {item.title}
+                <Icon name="chevron" />
+              </button>
+              <div class="body" id={`together-${item.id}`}>
+                <div>
+                  <p>{item.description}</p>
+                  <a class="link-arrow" href={item.href}>
+                    ดูรายละเอียด <Icon name="arrow" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      </div>
+      <div class="together-stage">
+        {TOGETHER_ITEMS.map((item, index) => <DeviceComposition composition={item.composition} class:list={[{ active: index === 0 }]} />)}
+      </div>
+    </div>
+  </div>
+
+  <script>
+    import '../../../scripts/together';
+  </script>
+</section>

@@ -1,0 +1,61 @@
+---
+import { CONTACT, SITE } from '../../../config/site';
+import Icon from '../../ui/Icon.astro';
+import LineButton from '../../ui/LineButton.astro';
+
+const quoteEmailSubject = encodeURIComponent('ขอใบเสนอราคา');
+const phoneDigits = CONTACT.phoneE164.replace('+66', '0');
+---
+
+<div class="channels stagger">
+  <div class="channel panel featured main">
+    <div><small>LINE · ตอบเร็วที่สุด</small><b>{CONTACT.lineId}</b></div>
+    <div class="acts">
+      <button type="button" class="btn btn-glass btn-sm copy-btn" data-copy={CONTACT.lineId} aria-label={`คัดลอก ${CONTACT.lineId}`} title="คัดลอก">
+        <Icon name="copy" />
+      </button>
+      <LineButton message="สวัสดีครับ" size="sm">เปิดแชท</LineButton>
+    </div>
+  </div>
+
+  <div class="channel panel">
+    <div><small>โทร</small><b>{CONTACT.phoneDisplay}</b></div>
+    <div class="acts">
+      <button type="button" class="btn btn-glass btn-sm copy-btn" data-copy={phoneDigits} aria-label={`คัดลอก ${phoneDigits}`} title="คัดลอก">
+        <Icon name="copy" />
+      </button>
+      <a class="btn btn-glass btn-sm" href={`tel:${CONTACT.phoneE164}`}><Icon name="phone" />โทรเลย</a>
+    </div>
+  </div>
+
+  <div class="channel panel">
+    <div><small>อีเมล</small><b>{CONTACT.email}</b></div>
+    <div class="acts">
+      <button type="button" class="btn btn-glass btn-sm copy-btn" data-copy={CONTACT.email} aria-label={`คัดลอก ${CONTACT.email}`} title="คัดลอก">
+        <Icon name="copy" />
+      </button>
+      <a class="btn btn-glass btn-sm" href={`mailto:${CONTACT.email}?subject=${quoteEmailSubject}`}><Icon name="mail" />ส่งอีเมล</a>
+    </div>
+  </div>
+
+  {
+    CONTACT.facebookUrl && (
+      <div class="channel panel">
+        <div>
+          <small>เพจ Facebook</small>
+          <b>{SITE.name}</b>
+        </div>
+        <div class="acts">
+          <a class="btn btn-glass btn-sm" href={CONTACT.facebookUrl} target="_blank" rel="noopener">
+            <Icon name="facebook" size={14} />
+            เปิดเพจ
+          </a>
+        </div>
+      </div>
+    )
+  }
+</div>
+
+<script>
+  import '../../../scripts/copy-to-clipboard';
+</script>

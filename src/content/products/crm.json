@@ -1,0 +1,153 @@
+{
+  "order": 5,
+  "category": "software",
+  "status": "available",
+  "label": "MEMBER CRM",
+  "englishName": "Member CRM",
+  "navLabel": "Member CRM",
+  "navDescription": "สะสมแต้ม คูปอง บัตรสมาชิก",
+  "seo": {
+    "title": "Member CRM",
+    "description": "ระบบสมาชิกสะสมแต้มสำหรับร้านออนไลน์ ลูกค้าจาก Shopee Lazada TikTok กลับมาซื้อซ้ำ"
+  },
+  "summary": {
+    "title": "ระบบสมาชิกสะสมแต้ม",
+    "description": "ลูกค้า Shopee Lazada TikTok กลับมาสะสมแต้มกับแบรนด์คุณ"
+  },
+  "startingPrice": {
+    "prefix": "เริ่ม",
+    "amount": 990,
+    "unit": "/เดือน"
+  },
+  "hero": {
+    "heading": [
+      "เปลี่ยนลูกค้าขาจร",
+      "ให้เป็นขาประจำ"
+    ],
+    "subtitle": [
+      "ระบบสมาชิกสะสมแต้มสำหรับร้านออนไลน์",
+      "ลูกค้าจาก Shopee Lazada TikTok กลับมาซื้อซ้ำ"
+    ],
+    "priceFrom": "เริ่ม 990/เดือน",
+    "primaryCta": {
+      "label": "ขอใบเสนอราคา",
+      "lineMessage": "สนใจ Member CRM ขอใบเสนอราคาครับ"
+    },
+    "secondaryCtaLabel": "ดูแพ็กเกจ",
+    "stage": {
+      "layout": "combo",
+      "devices": [
+        {
+          "kind": "laptop",
+          "image": "../../assets/images/screens/crm-admin-dashboard.webp",
+          "alt": "หลังบ้าน Member CRM"
+        },
+        {
+          "kind": "phone",
+          "image": "../../assets/images/screens/crm-member-card.webp",
+          "alt": "บัตรสมาชิกบนมือถือ"
+        }
+      ]
+    }
+  },
+  "features": {
+    "intro": "ฐานลูกค้าเป็นของร้าน ไม่ใช่ของแพลตฟอร์ม",
+    "items": [
+      {
+        "title": "สมัครผ่าน LINE",
+        "description": "หรือเบอร์โทร + OTP ใช้เวลาไม่ถึงนาที"
+      },
+      {
+        "title": "กรอกเลขออเดอร์รับแต้ม",
+        "description": "รองรับ Shopee Lazada และ TikTok Shop"
+      },
+      {
+        "title": "แลกรางวัลและคูปอง",
+        "description": "พร้อมติดตามพัสดุของรางวัล"
+      },
+      {
+        "title": "ระดับสมาชิก",
+        "description": "ตัวคูณแต้มและแจ้งเตือนผ่าน LINE"
+      },
+      {
+        "title": "หลังบ้านตรวจออเดอร์",
+        "description": "จับคู่อัตโนมัติ อนุมัติทีละหลายรายการ"
+      },
+      {
+        "title": "PDPA ครบ",
+        "description": "เก็บความยินยอม ส่งออก Excel/CSV ได้"
+      }
+    ]
+  },
+  "plans": [
+    {
+      "tag": "MEMBER START",
+      "name": "เริ่มระบบสะสมแต้ม",
+      "price": 990,
+      "unit": "/เดือน",
+      "featured": false,
+      "items": [
+        "สมาชิก 1,000 คน",
+        "สมัครด้วย LINE หรือเบอร์ + OTP",
+        "ค่าติดตั้ง 4,900"
+      ],
+      "cta": {
+        "label": "เลือกแพ็กเกจนี้",
+        "lineMessage": "สนใจ Member Start 990/เดือน ขอใบเสนอราคาครับ"
+      }
+    },
+    {
+      "tag": "MEMBER PLUS",
+      "name": "ระดับสมาชิก คูปอง แจ้งเตือน",
+      "price": 1990,
+      "unit": "/เดือน",
+      "badge": "แนะนำ",
+      "featured": true,
+      "items": [
+        "สมาชิก 5,000 คน",
+        "ระดับสมาชิก + คูปอง + แจ้งเตือน LINE",
+        "ค่าติดตั้ง 7,900"
+      ],
+      "cta": {
+        "label": "เลือกแพ็กเกจนี้",
+        "lineMessage": "สนใจ Member Plus 1,990/เดือน ขอใบเสนอราคาครับ"
+      }
+    },
+    {
+      "tag": "MEMBER PRO",
+      "name": "ครบทุกฟีเจอร์ ใส่แบรนด์ร้าน",
+      "price": 3490,
+      "unit": "/เดือน",
+      "isStartingPrice": true,
+      "featured": false,
+      "items": [
+        "ไม่จำกัดสมาชิก",
+        "Top Spender ชวนเพื่อน คูปองวันเกิด",
+        "ค่าติดตั้ง 12,900"
+      ],
+      "cta": {
+        "label": "เลือกแพ็กเกจนี้",
+        "lineMessage": "สนใจ Member Pro เริ่ม 3,490/เดือน ขอใบเสนอราคาครับ"
+      }
+    }
+  ],
+  "plansNote": "สัญญาขั้นต่ำ 6 เดือน · จ่ายรายปีฟรี 2 เดือน · ไม่รวม LINE OA เครดิต SMS และโดเมน · ราคายังไม่รวมภาษีมูลค่าเพิ่ม",
+  "faq": [
+    {
+      "question": "ตรวจออเดอร์อย่างไร?",
+      "answer": "อัปโหลดไฟล์จาก Seller Center ระบบจับคู่ให้อัตโนมัติ"
+    },
+    {
+      "question": "ข้อมูลลูกค้าเป็นของใคร?",
+      "answer": "เป็นของร้าน ส่งออกได้ทุกเมื่อ"
+    },
+    {
+      "question": "มีค่าใช้จ่ายอื่นไหม?",
+      "answer": "ร้านจ่ายค่า LINE OA เครดิต SMS OTP และโดเมนเอง"
+    },
+    {
+      "question": "เชื่อม API แพลตฟอร์มได้ไหม?",
+      "answer": "ได้ ประเมินราคาแยกตามแพลตฟอร์ม"
+    }
+  ]
+}

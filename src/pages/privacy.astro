@@ -1,0 +1,71 @@
+---
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import { ROUTES } from '../config/routes';
+import { CONTACT, SITE } from '../config/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'นโยบายความเป็นส่วนตัว';
+const description = `นโยบายความเป็นส่วนตัวของ ${SITE.name} เก็บข้อมูลเท่าที่จำเป็นและใช้เพื่อติดต่อกลับเท่านั้น`;
+
+// TODO(legal): fill in the retention period and effective date, then have the policy reviewed before launch.
+const RETENTION_PERIOD = '[ระบุระยะเวลา]';
+const EFFECTIVE_DATE = '[ระบุวันที่]';
+
+const sections = [
+  {
+    heading: 'ข้อมูลที่เราเก็บ',
+    body: 'ชื่อ-นามสกุล ชื่อธุรกิจ เบอร์โทร อีเมล งบประมาณ และรายละเอียดงานที่คุณกรอกในฟอร์ม หรือส่งให้เราทาง LINE โทรศัพท์ และอีเมล',
+  },
+  {
+    heading: 'เราใช้ข้อมูลเพื่ออะไร',
+    body: 'เพื่อติดต่อกลับ ให้คำปรึกษา จัดทำใบเสนอราคา และดำเนินงานตามที่ตกลงกันเท่านั้น เราไม่ขายข้อมูลของคุณให้ใคร',
+  },
+  {
+    heading: 'การเปิดเผยข้อมูล',
+    body: 'เราอาจใช้ผู้ให้บริการระบบที่จำเป็นต่อการติดต่อและทำงาน เช่น บริการแชท อีเมล และพื้นที่เก็บข้อมูล โดยเปิดเผยเท่าที่จำเป็น หรือเมื่อกฎหมายกำหนด',
+  },
+  {
+    heading: 'ระยะเวลาการเก็บ',
+    body: `เก็บไว้ตลอดช่วงที่ติดต่อหรือทำงานร่วมกัน และไม่เกิน ${RETENTION_PERIOD} หลังจากนั้น เว้นแต่กฎหมายกำหนดให้เก็บนานกว่า`,
+  },
+  {
+    heading: 'สิทธิ์ของคุณ',
+    body: 'คุณขอดู ขอสำเนา ขอแก้ไข ขอลบ ขอระงับการใช้ หรือถอนความยินยอมได้ทุกเมื่อ และร้องเรียนต่อสำนักงานคณะกรรมการคุ้มครองข้อมูลส่วนบุคคลได้',
+  },
+  {
+    heading: 'ติดต่อเรา',
+    body: `อีเมล ${CONTACT.email} · LINE ${CONTACT.lineId} · โทร ${CONTACT.phoneDisplay}`,
+  },
+];
+---
+
+<BaseLayout {title} {description} breadcrumbs={[{ name: title, path: ROUTES.privacy }]}>
+  <section class="p-hero">
+    <div class="container-page">
+      <SectionHeading
+        as="h1"
+        size="1"
+        label="PRIVACY POLICY"
+        heading={title}
+        sub={`${SITE.name} เก็บข้อมูลเท่าที่จำเป็น และใช้เพื่อติดต่อกลับคุณเท่านั้น`}
+        center
+      />
+    </div>
+  </section>
+
+  <section class="section tight">
+    <div class="container-page">
+      <div class="pv">
+        {
+          sections.map((section) => (
+            <div class="pv-row">
+              <h2>{section.heading}</h2>
+              <p>{section.body}</p>
+            </div>
+          ))
+        }
+        <p class="note">มีผลตั้งแต่วันที่ {EFFECTIVE_DATE}</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

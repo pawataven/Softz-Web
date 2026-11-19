@@ -1,0 +1,47 @@
+---
+import { PRODUCT_CATEGORIES } from '../../../config/navigation';
+import { ROUTES } from '../../../config/routes';
+import { CAROUSEL_ART } from '../../../data/about';
+import { lineMessageUrl } from '../../../lib/line';
+import { getProducts, isInDevelopment, startingPriceText } from '../../../lib/products';
+import DeviceComposition from '../../ui/DeviceComposition.astro';
+import Icon from '../../ui/Icon.astro';
+
+const products = (await getProducts()).filter((product) => CAROUSEL_ART[product.id]);
+---
+
+<div class="carousel" data-carousel>
+  <div class="car-track">
+    {
+      products.map((product) => {
+        const art = CAROUSEL_ART[product.id];
+        const href = ROUTES.product(product.id);
+        return (
+          <article class="car-card">
+            <a class={`art ${art.gradient}`} href={href} aria-label={product.data.summary.title} tabindex="-1">
+              <DeviceComposition composition={art.composition} decorative />
+            </a>
+            <span class="new">{isInDevelopment(product) ? product.data.hero.tag : PRODUCT_CATEGORIES[product.data.category].shortLabel}</span>
+            <h3>{product.data.summary.title}</h3>
+            <p>{product.data.summary.description}</p>
+            <span class="pr">{startingPriceText(product)}</span>
+            <div class="acts">
+              <a class="btn btn-primary" href={href}>ดูเพิ่มเติม</a>
+              <a class="more" href={lineMessageUrl(product.data.hero.primaryCta.lineMessage)} target="_blank" rel="noopener">
+                ขอราคา ›
+              </a>
+            </div>
+          </article>
+        );
+      })
+    }
+  </div>
+  <div class="car-nav">
+    <button type="button" data-car="-1" aria-label="ก่อนหน้า"><Icon name="chevron-left" /></button>
+    <button type="button" data-car="1" aria-label="ถัดไป"><Icon name="chevron-right" /></button>
+  </div>
+</div>
+
+<script>
+  import '../../../scripts/carousel';
+</script>

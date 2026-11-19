@@ -1,0 +1,142 @@
+---
+import { getCollection } from 'astro:content';
+import ContactCta from '../components/sections/ContactCta.astro';
+import WorkFilter from '../components/sections/work/WorkFilter.astro';
+import DeviceComposition from '../components/ui/DeviceComposition.astro';
+import Icon from '../components/ui/Icon.astro';
+import LineButton from '../components/ui/LineButton.astro';
+import { ROUTES } from '../config/routes';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { EXTRA_WORK_CATEGORIES, WORK_STYLES, styleSlug } from '../config/work';
+import { getProductGroups, getProducts } from '../lib/products';
+
+const title = 'ผลงาน';
+const description = 'ผลงานเว็บไซต์ ระบบหลังบ้าน UI/UX และซอฟต์แวร์จาก SOFT Z DIGITAL';
+const caseStudies = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+
+// Categories are the site's own services and software (same order and wording as the nav), then the work-only extras.
+const products = await getProducts();
+const categories = [
+  ...products.map((product) => ({ id: product.id, label: product.data.navLabel, href: ROUTES.product(product.id) })),
+  ...EXTRA_WORK_CATEGORIES.map(({ id, label, href }) => ({ id, label, href })),
+];
+const categoryLabel = new Map(categories.map((category) => [category.id, category.label]));
+const filterGroups = [
+  ...(await getProductGroups()).map((group) => ({
+    label: group.groupLabel,
+    items: group.products.map((product) => ({ id: product.id, label: product.data.navLabel })),
+  })),
+  ...EXTRA_WORK_CATEGORIES.map(({ id, label, groupLabel }) => ({ label: groupLabel, items: [{ id, label }] })),
+];
+// Style filter: only the styles some case study uses, in the order of WORK_STYLES.
+const usedStyles = new Set(caseStudies.flatMap(({ data }) => data.styles));
+const styleOptions = WORK_STYLES.filter((style) => usedStyles.has(style)).map((style) => ({ id: styleSlug(style), label: style }));
+const categoriesWithWork = new Set(caseStudies.map(({ data }) => data.category.id));
+const workCounts: Record<string, number> = {};
+caseStudies.forEach(({ data }) => (workCounts[data.category.id] = (workCounts[data.category.id] ?? 0) + 1));
+const categoriesWithoutWork = categories.filter((category) => !categoriesWithWork.has(category.id));
+---
+
+<BaseLayout {title} {description} breadcrumbs={[{ name: title, path: ROUTES.work }]}>
+  <section class="work-page" data-work-results>
+    {/* Sidebar (title + filters, sticky) beside the grid on wide screens; stacked on narrow ones. */}
+    <div class="container-page work-layout">
+      <aside class="work-side">
+        <div class="work-intro reveal">
+          <span class="label">OUR WORK</span>
+          <h1 class="work-title">ผลงานของเรา</h1>
+          <p class="work-sub">งานที่ทีม SOFT Z ออกแบบและพัฒนาให้ลูกค้าจริง</p>
+        </div>
+        <WorkFilter groups={filterGroups} styles={styleOptions} counts={workCounts} total={caseStudies.length} />
+      </aside>
+
+      <div class="cases">
+        {
+          caseStudies.map(({ id, data }) => (
+            <article class="case reveal" data-cat={data.category.id} data-styles={data.styles.map(styleSlug).join(' ')}>
+              {data.detail ? (
+                <a class="case-art" href={ROUTES.caseStudy(id)} aria-label={`ดูรายละเอียดผลงาน ${data.title}`}>
+                  <DeviceComposition composition={data.art} decorative />
+                </a>
+              ) : (
+                <div class="case-art">
+                  <DeviceComposition composition={data.art} />
+                </div>
+              )}
+              <div class="case-body">
+                <div class="case-meta-row">
+                  <span class="label">{categoryLabel.get(data.category.id)}</span>
+                  <span class="case-style">{data.styles.join(' · ')}</span>
+                </div>
+                <h2 class="case-title">{data.title}</h2>
+                <p>{data.description}</p>
+                <div class="chips">
+                  {data.tags.map((tag) => (
+                    <span class="tag tag-gray">{tag}</span>
+                  ))}
+                </div>
+                {/* One clear next step per card: the case study when there is one, otherwise a LINE chat. */}
+                <div class="case-actions">
+                  {data.detail ? (
+                    <a class="btn btn-primary btn-sm" href={ROUTES.caseStudy(id)}>
+                      ดูรายละเอียดและราคา <Icon name="arrow" />
+                    </a>
+                  ) : (
+                    <LineButton message={data.cta.lineMessage} size="sm">
+                      {data.cta.label}
+                    </LineButton>
+                  )}
+                </div>
+              </div>
+            </article>
+          ))
+        }
+
+        {/* Same size as a case study card: the grid stretches it to the height of its row. */}
+        <div class="case case-soon reveal" data-more-soon>
+          <span class="label">COMING SOON</span>
+          <h2 class="case-title"><span>ผลงานอื่น</span> <span>กำลังทยอยลงเร็วๆ นี้</span></h2>
+          <p>อยากดูตัวอย่างงานในธุรกิจแบบเดียวกับคุณ ทักมาขอดูได้เลย</p>
+          <div class="case-actions">
+            <LineButton message="ขอดูตัวอย่างผลงานเพิ่มเติมครับ ธุรกิจของผมคือ " size="sm">ขอดูผลงานเพิ่ม</LineButton>
+          </div>
+        </div>
+
+        {/* Shown when a category + style combination matches nothing. */}
+        <div class="case case-soon" data-no-match hidden>
+          <span class="label">NO MATCH</span>
+          <h2 class="case-title"><span>ยังไม่มีผลงาน</span> <span>แบบที่เลือก</span></h2>
+          <p>ลองเลือกหมวดหรือสไตล์อื่น หรือทักมาขอดูตัวอย่างงานแบบนี้ได้เลย</p>
+          <div class="case-actions">
+            <button class="btn btn-glass btn-sm" type="button" data-reset-filters>ดูผลงานทั้งหมด</button>
+          </div>
+        </div>
+
+        {
+          categoriesWithoutWork.map((category) => (
+            <div class="case case-soon" data-empty-for={category.id} hidden>
+              <span class="label">COMING SOON</span>
+              <h2 class="case-title"><span>ผลงาน {category.label}</span> <span>กำลังทยอยลงเร็วๆ นี้</span></h2>
+              <p>อยากดูตัวอย่างงาน {category.label} ทักมาขอดูได้เลย หรือดูรายละเอียดบริการก่อนก็ได้</p>
+              <div class="case-actions">
+                <LineButton message={`ขอดูตัวอย่างผลงาน ${category.label} ครับ ธุรกิจของผมคือ `} size="sm">
+                  ขอดูตัวอย่างงาน
+                </LineButton>
+                <a class="btn btn-glass btn-sm" href={category.href}>
+                  ดูรายละเอียด
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <ContactCta sub="อยากได้งานแบบนี้ให้ธุรกิจคุณ ทักมาคุยได้เลย" showContactBar={false} />
+
+  <script>
+    import '../scripts/work-filter';
+    import '../scripts/card-hover';
+  </script>
+</BaseLayout>

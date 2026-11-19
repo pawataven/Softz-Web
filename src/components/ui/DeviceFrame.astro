@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+import { DEVICE_IMAGE_SIZING, type Device } from '../../lib/devices';
+import PosScreen from './PosScreen.astro';
+
+interface Props {
+  device: Device;
+  priority?: boolean;
+  decorative?: boolean;
+}
+
+const { device, priority = false, decorative = false } = Astro.props;
+const loadingAttributes = priority ? { loading: 'eager' as const, fetchpriority: 'high' as const } : { loading: 'lazy' as const };
+
+const screenshot =
+  'image' in device
+    ? { src: device.image, alt: decorative ? '' : device.alt, ...DEVICE_IMAGE_SIZING[device.kind], ...loadingAttributes }
+    : null;
+---
+
+{
+  device.kind === 'laptop' && (
+    <div class="laptop">
+      <div class="lid">
+        <div class="screen">{screenshot ? <Image {...screenshot} /> : <PosScreen />}</div>
+      </div>
+      <div class="base" />
+    </div>
+  )
+}
+{
+  device.kind === 'phone' && screenshot && (
+    <div class="phone">
+      <div class="bezel">
+        <Image {...screenshot} />
+      </div>
+    </div>
+  )
+}
+{
+  device.kind === 'tablet' && screenshot && (
+    <div class="tablet">
+      <Image {...screenshot} />
+    </div>
+  )
+}

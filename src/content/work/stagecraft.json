@@ -1,0 +1,268 @@
+{
+  "order": 4,
+  "category": "demo",
+  "title": "Stagecraft",
+  "styles": [
+    "Minimal",
+    "Industrial"
+  ],
+  "description": "เว็บตัวอย่างทีมเวที แสง เสียง หน้าแรกเป็นทัวร์ภาพงานจริง ผลงานทุกงานมีภาพหลายมุมพร้อมงบประมาณ",
+  "tags": [
+    "เว็บตัวอย่าง",
+    "ออกแบบ UI",
+    "WebGL"
+  ],
+  "liveUrl": "https://stagecraft-pearl.vercel.app",
+  "cta": {
+    "label": "อยากได้เว็บแบบนี้",
+    "lineMessage": "เห็นเว็บตัวอย่าง Stagecraft แล้ว อยากได้เว็บบริษัทอีเวนต์แบบนี้ ขอใบเสนอราคาครับ"
+  },
+  "art": {
+    "layout": "combo",
+    "devices": [
+      {
+        "kind": "laptop",
+        "image": "../../assets/images/work/stagecraft/screens/home-desktop.webp",
+        "alt": "หน้าแรกเว็บตัวอย่าง Stagecraft บนคอม"
+      },
+      {
+        "kind": "phone",
+        "image": "../../assets/images/work/stagecraft/screens/m-light.webp",
+        "alt": "ฉากระบบแสงบนมือถือ"
+      }
+    ]
+  },
+  "detail": {
+    "seo": {
+      "title": "Stagecraft — เว็บตัวอย่างบริษัทเวที แสง เสียง",
+      "description": "เว็บตัวอย่างบริษัทอีเวนต์โดย SOFT Z DIGITAL ทัวร์ภาพงานจริงแบบภาพยนตร์ ผลงาน 12 งานพร้อมงบแยกรายการ และฟอร์มขอราคา พร้อมราคาประเมิน"
+    },
+    "cover": {
+      "image": "../../assets/images/work/stagecraft/photos/blaze.webp",
+      "alt": "แสงจากเวทีคอนเสิร์ตส่องผ่านคนดู",
+      "eyebrow": "DEMO WEBSITE · EVENT PRODUCTION",
+      "subtitle": "เว็บตัวอย่างทีมเวที แสง สี เสียง และจอ LED ที่ให้ภาพงานจริงเล่าเรื่องแทนตัวหนังสือ",
+      "mobileFocus": "55% 45%"
+    },
+    "statement": [
+      "งานอีเวนต์ขายด้วยภาพ",
+      "ไม่ใช่ตัวหนังสือ"
+    ],
+    "showcase": {
+      "kind": "desktop",
+      "image": "../../assets/images/work/stagecraft/screens/tour-poster.webp",
+      "alt": "หน้าแรก Stagecraft",
+      "video": {
+        "mp4": "/videos/work/stagecraft-tour.mp4",
+        "webm": "/videos/work/stagecraft-tour.webm"
+      }
+    },
+    "story": "Stagecraft เป็นเว็บตัวอย่างบริษัทโปรดักชันเวทีที่ SOFT Z ออกแบบใหม่ทั้งหมด ตั้งแต่ชื่อแบรนด์ไปจนถึงหน้าเว็บ โทนดำกับแสงอำพันแบบไฟเวที ตัวหนังสือเล็กและบาง ปล่อยให้ภาพงานจริงเป็นตัวเด่น ลูกค้าเลื่อนดูงานแบบภาพยนตร์ เปิดดูผลงานพร้อมงบ แล้วขอราคางานแบบเดียวกันได้ทันที",
+    "facts": [
+      {
+        "value": "6",
+        "label": "หน้าเว็บไซต์"
+      },
+      {
+        "value": "7",
+        "label": "ฉากในทัวร์หน้าแรก"
+      },
+      {
+        "value": "12",
+        "label": "ผลงานพร้อมงบประมาณ"
+      },
+      {
+        "value": "61",
+        "label": "ภาพงานจริง โทนเดียวกัน"
+      }
+    ],
+    "chapters": [
+      {
+        "label": "01 / PHOTO TOUR",
+        "title": "เลื่อนทีละฉาก เหมือนเดินเข้างานจริง",
+        "body": "หน้าแรกเป็นภาพงานจริง 7 ฉาก เลื่อนเมาส์ กดลูกศร หรือปัดจอ แล้วกล้องพุ่งเข้าไปในภาพสู่ฉากถัดไป มีแสงรั่วและเกรนฟิล์มแบบงานวิดีโอ ข้อความวางมุมล่างเหมือนคำบรรยายภาพ",
+        "screens": [
+          {
+            "kind": "desktop",
+            "image": "../../assets/images/work/stagecraft/screens/led-desktop.webp",
+            "alt": "ฉากจอ LED ในทัวร์หน้าแรก"
+          },
+          {
+            "kind": "mobile",
+            "image": "../../assets/images/work/stagecraft/screens/home-mobile.webp",
+            "alt": "หน้าแรกบนมือถือ"
+          }
+        ]
+      },
+      {
+        "label": "02 / WORKS",
+        "title": "ผลงานทุกงานบอกงบชัดเจน",
+        "body": "ผลงาน 12 งาน กรองได้ 4 ประเภท ทุกการ์ดบอกขนาดงานและงบประมาณ ลูกค้าเทียบได้ทันทีว่างบของตัวเองใกล้กับงานแบบไหน",
+        "screens": [
+          {
+            "kind": "desktop",
+            "image": "../../assets/images/work/stagecraft/screens/works-desktop.webp",
+            "alt": "หน้ารวมผลงานพร้อมตัวกรอง"
+          },
+          {
+            "kind": "mobile",
+            "image": "../../assets/images/work/stagecraft/screens/works-mobile.webp",
+            "alt": "หน้ารวมผลงานบนมือถือ"
+          }
+        ]
+      },
+      {
+        "label": "03 / CASE",
+        "title": "ภาพหลายมุม พร้อมงบแยกรายการ",
+        "body": "หน้าผลงานแต่ละงานมีแกลเลอรีหลายมุม ข้อมูลงาน อุปกรณ์ที่ใช้ และงบประมาณแยกตามส่วน เวที แสง เสียง จอ ทีมงาน พร้อมผลงานใกล้เคียงให้ดูต่อ",
+        "screens": [
+          {
+            "kind": "desktop",
+            "image": "../../assets/images/work/stagecraft/screens/work-desktop.webp",
+            "alt": "หน้ารายละเอียดผลงาน World Music Night"
+          },
+          {
+            "kind": "mobile",
+            "image": "../../assets/images/work/stagecraft/screens/work-mobile.webp",
+            "alt": "หน้ารายละเอียดผลงานบนมือถือ"
+          }
+        ]
+      },
+      {
+        "label": "04 / QUOTE",
+        "title": "ขอราคาจากงานที่ชอบได้เลย",
+        "body": "กดขอราคางานแบบนี้จากหน้าผลงาน ฟอร์มกรอกชื่องานและงบให้อัตโนมัติ ลูกค้าเพิ่มแค่วันงาน สถานที่ และจำนวนแขก ทีมขายรู้ทันทีว่าลูกค้าอยากได้งานระดับไหน",
+        "screens": [
+          {
+            "kind": "desktop",
+            "image": "../../assets/images/work/stagecraft/screens/contact-desktop.webp",
+            "alt": "ฟอร์มขอใบเสนอราคา"
+          },
+          {
+            "kind": "mobile",
+            "image": "../../assets/images/work/stagecraft/screens/contact-mobile.webp",
+            "alt": "ฟอร์มขอใบเสนอราคาบนมือถือ"
+          }
+        ]
+      }
+    ],
+    "mobileStrip": {
+      "label": "MOBILE FIRST",
+      "title": "ทัวร์ภาพเต็มจอบนมือถือ",
+      "body": "ปัดขึ้นทีละฉากเหมือนดูสตอรี ภาพจัดให้จุดสำคัญอยู่กลางจอ ข้อความอยู่ล่าง ส่งลิงก์ในแชตแล้วลูกค้าดูงานต่อได้ทันที",
+      "screens": [
+        {
+          "kind": "mobile",
+          "image": "../../assets/images/work/stagecraft/screens/m-light.webp",
+          "alt": "ฉากระบบแสงบนมือถือ"
+        },
+        {
+          "kind": "mobile",
+          "image": "../../assets/images/work/stagecraft/screens/m-crew.webp",
+          "alt": "ฉากทีมงานบนมือถือ"
+        },
+        {
+          "kind": "mobile",
+          "image": "../../assets/images/work/stagecraft/screens/m-budget.webp",
+          "alt": "งบประมาณแยกรายการบนมือถือ"
+        },
+        {
+          "kind": "mobile",
+          "image": "../../assets/images/work/stagecraft/screens/m-services.webp",
+          "alt": "หน้าบริการบนมือถือ"
+        }
+      ]
+    },
+    "photos": {
+      "label": "GALLERY",
+      "title": "ภาพงานจริงโทนเดียวกันทั้งเว็บ",
+      "body": "ภาพทั้ง 61 ภาพปรับสีเป็นชุดเดียวกัน ลดความสด เติมแสงอำพันบางๆ ให้เข้ากับโทนดำของเว็บ ไม่ว่างานจะเป็นคอนเสิร์ต สัมมนา หรืองานเลี้ยง",
+      "items": [
+        {
+          "image": "../../assets/images/work/stagecraft/photos/festival.webp",
+          "alt": "เวทีคอนเสิร์ตกลางแจ้งพร้อมไฟ"
+        },
+        {
+          "image": "../../assets/images/work/stagecraft/photos/laser.webp",
+          "alt": "ลำแสงสีอำพันบนเวที"
+        },
+        {
+          "image": "../../assets/images/work/stagecraft/photos/x05.webp",
+          "alt": "พลุเย็นกลางเวที"
+        },
+        {
+          "image": "../../assets/images/work/stagecraft/photos/console.webp",
+          "alt": "คอนโซลเสียงดิจิทัล"
+        },
+        {
+          "image": "../../assets/images/work/stagecraft/photos/x36.webp",
+          "alt": "บรรยากาศงานเลี้ยง"
+        },
+        {
+          "image": "../../assets/images/work/stagecraft/photos/x28.webp",
+          "alt": "เวทีเสวนากลางห้องประชุม"
+        }
+      ]
+    },
+    "pricing": {
+      "total": 29900,
+      "totalLabel": "ราคาประเมิน",
+      "title": "ประเมินที่ 29,900 บาท",
+      "intro": "ถ้าทำเว็บแบบนี้ให้บริษัทอีเวนต์ของคุณ ราคาคือแพ็กเกจพรีเมียมบวกทัวร์ภาพหน้าแรก ตารางนี้แยกให้เห็นว่าแต่ละส่วนคืออะไร",
+      "items": [
+        {
+          "name": "วางโครงเว็บและ UX",
+          "detail": "ลำดับการใช้งานจากดูภาพงาน เปิดผลงานพร้อมงบ ไปจนถึงขอใบเสนอราคา",
+          "amount": 2500
+        },
+        {
+          "name": "ออกแบบโลโก้",
+          "detail": "โลโก้ตัวอักษร Stagecraft ไฟล์ SVG และ PNG พร้อมไอคอนเว็บ",
+          "amount": 2000
+        },
+        {
+          "name": "ออกแบบ UI ทั้งเว็บ",
+          "detail": "ออกแบบ 6 หน้า ทั้งจอคอมและมือถือ ตัวหนังสือเรียบ คุมภาพทั้ง 61 ภาพให้เป็นโทนเดียวกัน",
+          "amount": 7000
+        },
+        {
+          "name": "พัฒนาเว็บและระบบผลงาน",
+          "detail": "ผลงานทุกงานสร้างจากข้อมูลชุดเดียว กรองประเภท หน้ารายละเอียดพร้อมแกลเลอรี งบแยกรายการ และผลงานใกล้เคียงสร้างให้อัตโนมัติ",
+          "amount": 7900
+        },
+        {
+          "name": "ทัวร์ภาพแบบภาพยนตร์",
+          "detail": "หน้าแรก 7 ฉาก เปลี่ยนฉากด้วยเมาส์ ลูกศร หรือปัดจอ เอฟเฟกต์ซูมพุ่งเข้าภาพ แสงรั่ว และเกรนฟิล์ม เขียนด้วย WebGL",
+          "amount": 5500
+        },
+        {
+          "name": "แกลเลอรีและฟอร์มขอราคา",
+          "detail": "แกลเลอรีกดขยาย และฟอร์มขอใบเสนอราคาที่เติมชื่องานให้อัตโนมัติ",
+          "amount": 2500
+        },
+        {
+          "name": "แอนิเมชันและ Interaction",
+          "detail": "ข้อความค่อยๆ ขึ้น ขอบการ์ดเรืองแสงตามเมาส์ และปุ่มที่ขยับตามเมาส์",
+          "amount": 1500
+        },
+        {
+          "name": "SEO พื้นฐานและขึ้นเว็บ",
+          "detail": "ตั้งชื่อหน้าและคำอธิบายทุกหน้า ขึ้นระบบ และทดสอบก่อนส่งมอบ",
+          "amount": 1000
+        }
+      ],
+      "notes": [
+        "แพ็กเกจ Premium Website 24,900 บาท บวกทัวร์ภาพแบบภาพยนตร์ 5,000 บาท รวมโดเมน .com และโฮสติ้งปีแรก ยังไม่รวมภาษีมูลค่าเพิ่ม",
+        "อยากเพิ่มผลงานเองผ่านระบบหลังบ้าน เพิ่มระบบ CMS เริ่ม 12,900 บาท",
+        "เว็บตัวอย่างนี้ยังไม่ได้เปิดใช้งานจริง ภาพทั้งหมดเป็นภาพฟรีจาก Unsplash ผลงานและงบประมาณเป็นข้อมูลตัวอย่าง"
+      ]
+    },
+    "stack": [
+      "Figma",
+      "Nuxt",
+      "TypeScript",
+      "WebGL",
+      "Vercel"
+    ]
+  }
+}

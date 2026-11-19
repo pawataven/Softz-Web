@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../../assets/images/brand/softz-logo.png';
+import { PRIMARY_NAV } from '../../config/navigation';
+import { ROUTES } from '../../config/routes';
+import { SITE } from '../../config/site';
+import { getProductGroups } from '../../lib/products';
+
+const productGroups = await getProductGroups();
+const buddhistYear = new Date().getFullYear() + 543;
+---
+
+<footer class="container-page">
+  <div class="footer">
+    <div class="footer-top">
+      <div>
+        <Image src={logo} alt={SITE.name} height={24} width={Math.round((logo.width / logo.height) * 24)} layout="fixed" />
+        <p>{SITE.tagline}</p>
+      </div>
+      {
+        productGroups.map((group) => (
+          <nav aria-label={group.groupLabel}>
+            <h2>{group.groupLabel}</h2>
+            <ul>
+              {group.products.map((product) => (
+                <li>
+                  <a href={ROUTES.product(product.id)}>{product.data.navLabel}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))
+      }
+      <nav aria-label="SOFT Z">
+        <h2>SOFT Z</h2>
+        <ul>
+          {
+            PRIMARY_NAV.map((link) => (
+              <li>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>© {buddhistYear} {SITE.name} · <a href={ROUTES.privacy}>นโยบายความเป็นส่วนตัว</a></span>
+      <span>ราคายังไม่รวมภาษีมูลค่าเพิ่ม · ผู้ว่าจ้างนิติบุคคลหัก ณ ที่จ่ายตามกฎหมาย</span>
+    </div>
+  </div>
+</footer>

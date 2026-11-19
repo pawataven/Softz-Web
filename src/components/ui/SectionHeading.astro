@@ -1,0 +1,41 @@
+---
+interface Props {
+  label?: string;
+  heading: string | string[];
+  sub?: string | string[];
+  as?: 'h1' | 'h2';
+  size?: 'display' | '1' | '2';
+  thai?: boolean;
+  center?: boolean;
+  id?: string;
+}
+
+const { label, heading, sub, as: Tag = 'h2', size = '2', thai = true, center = false, id } = Astro.props;
+const headingLines = Array.isArray(heading) ? heading : [heading];
+const subLines = sub === undefined ? [] : Array.isArray(sub) ? sub : [sub];
+---
+
+<div class:list={['heading', 'reveal', { center }]}>
+  {label && <span class="label">{label}<slot name="label-extra" /></span>}
+  <Tag class:list={[`h-${size}`, { th: thai }]} id={id}>
+    {
+      headingLines.map((line) => (
+        <span class="line-mask">
+          <span>{line}</span>
+        </span>
+      ))
+    }
+  </Tag>
+  {
+    subLines.length > 0 && (
+      <p class="sub">
+        {subLines.map((line, index) => (
+          <>
+            {index > 0 && <br />}
+            {line}
+          </>
+        ))}
+      </p>
+    )
+  }
+</div>

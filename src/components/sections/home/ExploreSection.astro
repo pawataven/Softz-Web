@@ -1,0 +1,81 @@
+---
+import { PRODUCT_CATEGORIES } from '../../../config/navigation';
+import { ROUTES } from '../../../config/routes';
+import { EXPLORE_SCENES } from '../../../data/home';
+import { getProducts, isInDevelopment, startingPriceText } from '../../../lib/products';
+import DeviceComposition from '../../ui/DeviceComposition.astro';
+import Icon from '../../ui/Icon.astro';
+import SectionHeading from '../../ui/SectionHeading.astro';
+
+const products = (await getProducts()).filter((product) => EXPLORE_SCENES[product.id]);
+const [firstProduct] = products;
+if (!firstProduct) {
+  throw new Error(
+    'ExploreSection: no products matched EXPLORE_SCENES. Check src/content/products/*.json; if they are valid, restart the dev server to reload the content store.',
+  );
+}
+
+const tabCaption = (product: (typeof products)[number]) => {
+  const category = PRODUCT_CATEGORIES[product.data.category].shortLabel;
+  const detail = isInDevelopment(product) ? product.data.hero.tag : startingPriceText(product, { spaceBeforeUnit: false });
+  return `${category} · ${detail}`;
+};
+---
+
+<section class="explore-section" aria-labelledby="explore-heading" data-explore-section>
+  <div class="explore-pin">
+    <div class="container-page">
+      {/* Heading and list share the left column, so the devices on the right get the full screen height. */}
+      <div class="explore page-grid" data-explore>
+        <div class="explore-left">
+        <SectionHeading label="WHAT WE BUILD" heading="บริการทั้ง 6 อย่าง" sub="จากเว็บไซต์ถึงระบบหน้าร้าน เลื่อนลงเพื่อดูทีละอย่าง" id="explore-heading" />
+        <ul class="explore-list" role="tablist" aria-label="บริการและซอฟต์แวร์">
+          {
+            products.map((product, index) => (
+              <li role="presentation">
+                <button
+                  type="button"
+                  role="tab"
+                  id={`tab-${product.id}`}
+                  aria-selected={index === 0 ? 'true' : 'false'}
+                  aria-controls={`scene-${product.id}`}
+                  tabindex={index === 0 ? 0 : -1}
+                  data-title={product.data.summary.title}
+                  data-desc={product.data.summary.description}
+                  data-href={ROUTES.product(product.id)}
+                >
+                  <b>{product.data.englishName}</b>
+                  <small>{tabCaption(product)}</small>
+                </button>
+              </li>
+            ))
+          }
+        </ul>
+        </div>
+        <div class="explore-right">
+          <div class="explore-stage">
+            {
+              products.map((product, index) => (
+                <div class:list={['scene', { active: index === 0 }]} id={`scene-${product.id}`} role="tabpanel" aria-labelledby={`tab-${product.id}`}>
+                  <DeviceComposition composition={EXPLORE_SCENES[product.id]} />
+                </div>
+              ))
+            }
+          </div>
+          <div class="explore-info">
+            <div>
+              <b data-ex-title>{firstProduct.data.summary.title}</b>
+              <p data-ex-desc>{firstProduct.data.summary.description}</p>
+            </div>
+            <a class="link-arrow" data-ex-link href={ROUTES.product(firstProduct.id)}>ดูรายละเอียด <Icon name="arrow" /></a>
+          </div>
+          <div class="explore-progress" aria-hidden="true"><i></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    import '../../../scripts/explore';
+  </script>
+</section>

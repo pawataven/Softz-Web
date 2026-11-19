@@ -1,0 +1,519 @@
+/* ---------- work page: compact heading, category pills, card grid ---------- */
+main > section.work-page {
+  justify-content: flex-start;
+  min-height: 0;
+  padding-top: var(--space-hero-start);
+  padding-bottom: clamp(20px, 3vh, 96px);
+}
+
+/* ---------- category filter (pills match the nav menu); sticks below the nav while the grid scrolls ---------- */
+.work-filter {
+  position: sticky;
+  top: calc(var(--nav-h) + 12px);
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-actions);
+  transition: top 0.45s var(--ease);
+}
+
+body:has(.nav.hide) .work-filter {
+  top: 12px;
+}
+
+.work-filter-track {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  max-width: 100%;
+  padding: 5px;
+  border-radius: 999px;
+  background: rgba(17, 18, 20, 0.78);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: inset 0 0 0 1px var(--line);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.work-filter-track::-webkit-scrollbar {
+  display: none;
+}
+
+.work-filter-group {
+  display: flex;
+  gap: 2px;
+}
+
+/* Hairline between ทั้งหมด, the services and the software. */
+.work-filter-group::before {
+  content: "";
+  align-self: center;
+  width: 1px;
+  height: 16px;
+  margin-inline: 6px;
+  background: var(--line-strong);
+}
+
+.work-filter button {
+  flex: none;
+  height: 36px;
+  padding: 0 16px;
+  font: 500 14px/1 var(--th);
+  white-space: nowrap;
+  color: #d7d8db;
+  background: none;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    background 0.2s;
+}
+
+.work-filter button:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.work-filter button[aria-pressed="true"] {
+  color: var(--bg);
+  background: var(--fg);
+}
+
+.work-filter button:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+/*
+  ---------- card grid ----------
+  Large screens: four equal columns, so the case studies and the "coming soon" card share one row and the whole
+  section fits one screen. Below that: 2 columns, then 1.
+*/
+.cases {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 1fr; /* every row as tall as the tallest card, so the "coming soon" card always matches */
+  gap: var(--gutter);
+  margin-top: clamp(20px, 3vh, 48px);
+}
+
+.case {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--hair);
+  overflow: hidden;
+}
+
+.case[hidden] {
+  display: none;
+}
+
+.case-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  padding: 20px 22px 24px;
+  background: radial-gradient(120% 100% at 50% 0%, #2a1a12, #111214 70%);
+  box-shadow: inset 0 -1px 0 var(--hair);
+}
+
+.case-art > * {
+  width: 100%;
+}
+
+a.case-art:hover .combo {
+  transform: scale(1.03);
+}
+
+.case-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: 20px 22px 24px;
+}
+
+.case-title {
+  font: 600 22px/1.25 var(--th);
+  letter-spacing: -0.01em;
+  margin-top: 8px;
+}
+
+.case p {
+  color: var(--gray);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+.case .chips {
+  margin-top: 12px;
+}
+
+/* The button sits on the card's bottom edge so the cards in a row line up. */
+.case-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+/* Placeholder card: same frame with a dashed edge, content centred so the empty card reads as intentional. */
+.case-soon {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 32px 24px;
+  background: transparent;
+  box-shadow: none;
+  border: 1px dashed var(--line-strong);
+}
+
+/* Thai has no spaces between words, so each phrase is kept whole and the line only breaks between them. */
+.case-soon .case-title span {
+  display: inline-block;
+}
+
+.case-soon p {
+  max-width: 300px;
+}
+
+.case-soon .case-actions {
+  justify-content: center;
+  margin-top: 0;
+}
+
+/* "More coming" as one slim row across the whole grid. */
+.case-soon.case-strip {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px 20px;
+  margin-top: calc(12px - var(--gutter)); /* sit closer to the cards than the grid gap */
+  padding: 6px 6px 6px 24px;
+  text-align: left;
+}
+
+.case-strip .label {
+  flex: none;
+}
+
+.case-strip .case-title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.case-strip p {
+  flex: 1;
+  max-width: none;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left !important;
+}
+
+.case-strip .case-actions {
+  flex: none;
+  margin-left: auto;
+  padding-top: 0;
+}
+
+@media (max-width: 767px) {
+  .case-soon.case-strip {
+    flex-wrap: wrap;
+    margin-top: 0;
+    padding: 18px 20px;
+  }
+
+  .case-strip p {
+    flex-basis: 100%;
+    white-space: normal;
+  }
+
+  .case-strip .case-actions {
+    margin-left: 0;
+  }
+}
+
+/* Four columns get too narrow below ~1200px: two per row there. */
+@media (max-width: 1199px) {
+  .cases {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .work-filter {
+    justify-content: flex-start;
+  }
+
+  .cases {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .case-art {
+    padding: 20px 20px 28px;
+  }
+
+  .case-soon {
+    min-height: 0;
+  }
+}
+
+/*
+  ---------- cursor light ----------
+  Same white border glow as the nav menu (components/edge-glow.css, fed by scripts/spotlight.ts); nothing lights the
+  inside. The glow's ::before needs a positioned host.
+*/
+.case,
+.work-filter-track {
+  position: relative;
+}
+
+/* The devices drift a little toward the cursor (scripts/card-hover.ts sets --px / --py from -0.5 to 0.5). */
+.case-art .combo {
+  translate: calc(var(--px, 0) * 16px) calc(var(--py, 0) * 10px);
+  transition:
+    translate 0.6s var(--ease),
+    transform 0.6s var(--ease);
+}
+
+/* ---------- design style: on the card, and the dropdown at the end of the filter bar ---------- */
+.case-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.case-style {
+  font: 600 11px/1.4 var(--en);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  white-space: nowrap;
+}
+
+.work-style select {
+  height: 36px;
+  padding: 0 34px 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%276%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 fill=%27none%27 stroke=%27%23d7d8db%27 stroke-width=%271.4%27/%3E%3C/svg%3E") no-repeat right 14px center;
+  appearance: none;
+  font: 500 14px/1 var(--en);
+  color: #d7d8db;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.work-style select:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+  color: #fff;
+}
+
+/* A chosen style reads as "on", like a pressed category pill. */
+.work-style select.is-set {
+  background-color: var(--fg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%276%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 fill=%27none%27 stroke=%27%2308090a%27 stroke-width=%271.4%27/%3E%3C/svg%3E");
+  color: var(--bg);
+}
+
+.work-style select:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+.work-style option {
+  background: var(--surface);
+  color: var(--fg);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/*
+  ---------- sidebar layout ----------
+  Wide screens: title + filters in a sticky column on the left, cards on the right (3 per row, 2 below 1200px).
+  The filters become a quiet vertical list with counts, so they no longer look like a second nav bar.
+  Narrow screens keep the stacked title and the scrolling pill above the grid.
+*/
+.work-intro .label {
+  display: block;
+}
+
+.work-title {
+  margin: 10px 0 8px;
+  font: 600 clamp(30px, 2.6vw, 40px) / 1.2 var(--th);
+  letter-spacing: -0.01em;
+}
+
+.work-sub {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--dim);
+}
+
+.work-filter-group-label,
+.work-filter-count {
+  display: none;
+}
+
+@media (min-width: 1000px) {
+  main > section.work-page {
+    /* <main> already starts below the nav: a small gap only. The sticky sidebar sits the same distance under the
+       nav, so nothing jumps when the page starts scrolling. */
+    padding-top: 24px;
+  }
+
+  .work-layout {
+    display: grid;
+    grid-template-columns: 236px minmax(0, 1fr);
+    gap: clamp(32px, 3.6vw, 64px);
+    align-items: start;
+  }
+
+  .work-side {
+    position: sticky;
+    top: calc(var(--nav-h) + 24px);
+    display: grid;
+    gap: 24px;
+    /* Short screens: the sidebar scrolls on its own rather than running past the bottom. */
+    max-height: calc(100vh - var(--nav-h) - 40px);
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+  .work-side::-webkit-scrollbar {
+    display: none;
+  }
+
+  .work-filter {
+    position: static;
+    display: block;
+    margin: 0;
+  }
+
+  .work-filter-track {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .work-filter-group {
+    flex-direction: column;
+    gap: 0;
+    margin-top: 12px;
+  }
+
+  .work-filter-group::before {
+    display: none;
+  }
+
+  .work-filter-group-label {
+    display: block;
+    padding: 0 12px 6px;
+    font: 600 11px/1.4 var(--en);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+
+  .work-filter button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    height: 32px;
+    padding: 0 12px;
+    border-radius: 8px;
+    text-align: left;
+    color: #b9bbc0;
+  }
+
+  .work-filter button[aria-pressed="true"] {
+    color: var(--fg);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: inset 2px 0 0 var(--fg);
+  }
+
+  .work-filter-count {
+    display: inline;
+    min-width: 20px;
+    font: 500 12px/1 var(--en);
+    text-align: right;
+    color: var(--dim);
+  }
+
+  .work-filter button[aria-pressed="true"] .work-filter-count {
+    color: var(--fg);
+  }
+
+  .work-filter button.is-empty {
+    color: rgba(255, 255, 255, 0.42);
+  }
+
+  .work-style select {
+    width: 100%;
+    height: 38px;
+    padding: 0 34px 0 12px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1px var(--line);
+    font-size: 13.5px;
+  }
+
+  .work-style select.is-set {
+    background-color: rgba(255, 255, 255, 0.08);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%276%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 fill=%27none%27 stroke=%27%23d7d8db%27 stroke-width=%271.4%27/%3E%3C/svg%3E");
+    color: var(--fg);
+    box-shadow: inset 0 0 0 1px var(--fg);
+  }
+
+  .cases {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1000px) {
+  .cases {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1400px) {
+  .cases {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 999px) {
+  .work-intro {
+    text-align: center;
+  }
+}

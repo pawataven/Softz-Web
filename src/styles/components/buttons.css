@@ -1,0 +1,147 @@
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 24px;
+  border-radius: 999px;
+  font: 500 16px/1 var(--th);
+  border: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform 0.4s var(--ease),
+    box-shadow 0.4s var(--ease),
+    background 0.3s;
+}
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+.btn-primary {
+  background: #f5f5f6;
+  color: #08090a;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.btn-glass {
+  color: var(--fg);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px rgba(245, 245, 246, 0.55);
+}
+
+.btn-sm {
+  height: 40px;
+  padding: 0 18px;
+  font-size: 14px;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    transform: scale(1.045);
+  }
+
+  .btn-primary:hover {
+    box-shadow:
+      0 1px 0 #fff inset,
+      0 10px 28px rgba(0, 0, 0, 0.45);
+  }
+
+  .btn-glass:hover {
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 0 0 1px #fff;
+  }
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: var(--fg);
+  white-space: nowrap;
+}
+
+.link-arrow svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s var(--ease);
+}
+
+.link-arrow:hover {
+  color: #fff;
+}
+
+.link-arrow:hover svg {
+  transform: translateX(4px);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font: 500 12px/1 var(--th);
+  border: 1px solid;
+  white-space: nowrap;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+/* Orange frame, light text: orange Thai text glows on the dark background. */
+.tag-orange {
+  background: var(--orange-tint);
+  border-color: var(--orange-line);
+  color: var(--fg);
+}
+
+.tag-gray {
+  background: var(--surface2);
+  border-color: var(--line-strong);
+  color: var(--gray);
+}
+
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: 7px;
+  background: var(--surface2);
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+  font: 500 12px var(--en);
+  color: var(--gray);
+}
+
+.glass {
+  background: rgba(24, 25, 28, 0.72);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  backdrop-filter: blur(20px) saturate(170%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 10px 30px rgba(0, 0, 0, 0.35);
+}

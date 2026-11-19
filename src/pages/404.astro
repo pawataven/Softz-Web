@@ -1,0 +1,25 @@
+---
+import LineButton from '../components/ui/LineButton.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import { ROUTES } from '../config/routes';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="ไม่พบหน้านี้" description="ไม่พบหน้าที่คุณค้นหา" noindex>
+  <section class="p-hero">
+    <div class="container-page">
+      <SectionHeading
+        as="h1"
+        size="1"
+        label="404"
+        heading="ไม่เจอหน้านี้"
+        sub="ลิงก์อาจเปลี่ยนไปแล้ว กลับไปหน้าแรก หรือทักมาถามเราได้เลย"
+        center
+      />
+      <div class="btn-row reveal">
+        <a class="btn btn-primary" href={ROUTES.home}>กลับหน้าแรก</a>
+        <LineButton message="สวัสดีครับ" variant="glass">ทักแชท LINE</LineButton>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

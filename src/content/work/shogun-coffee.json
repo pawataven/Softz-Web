@@ -1,0 +1,257 @@
+{
+  "order": 2,
+  "category": "demo",
+  "title": "Shogun Coffee",
+  "styles": [
+    "Editorial",
+    "Warm"
+  ],
+  "description": "เว็บตัวอย่างคาเฟ่และโรงคั่วกาแฟ 6 หน้า หน้าแรกเป็นภาพร้านเต็มจอ เมนู 27 รายการ หน้าอีเวนต์ และแผนที่สาขา",
+  "tags": [
+    "เว็บตัวอย่าง",
+    "ออกแบบ UI",
+    "แอนิเมชัน"
+  ],
+  "liveUrl": "https://shogun-coffee.vercel.app",
+  "cta": {
+    "label": "อยากได้เว็บแบบนี้",
+    "lineMessage": "เห็นเว็บตัวอย่าง Shogun Coffee แล้ว อยากได้เว็บแบบนี้ให้ร้าน ขอใบเสนอราคาครับ"
+  },
+  "art": {
+    "layout": "combo",
+    "devices": [
+      {
+        "kind": "laptop",
+        "image": "../../assets/images/work/shogun-coffee/screens/home-desktop-v2.webp",
+        "alt": "หน้าแรก Shogun Coffee บนคอม"
+      },
+      {
+        "kind": "phone",
+        "image": "../../assets/images/work/shogun-coffee/screens/menu-mobile-v2.webp",
+        "alt": "หน้าเมนู Shogun Coffee บนมือถือ"
+      }
+    ]
+  },
+  "detail": {
+    "seo": {
+      "title": "Shogun Coffee — เว็บตัวอย่างคาเฟ่และโรงคั่วกาแฟ",
+      "description": "เว็บตัวอย่างคาเฟ่ 6 หน้าโดย SOFT Z DIGITAL เมนู 27 รายการ อีเวนต์นับถอยหลัง แผนที่สาขา และแอนิเมชันทั้งเว็บ พร้อมราคาประเมินถ้าทำให้ร้านคุณ"
+    },
+    "cover": {
+      "image": "../../assets/images/work/shogun-coffee/photos/storefront-cover.webp",
+      "alt": "หน้าร้านกาแฟยามค่ำคืน แสงไฟอบอุ่น มีคนเดินผ่าน",
+      "eyebrow": "DEMO WEBSITE · CAFE",
+      "subtitle": "เว็บตัวอย่างคาเฟ่และโรงคั่วกาแฟ โทนขาว ดำ แดง ภาพร้านเต็มจอ และแอนิเมชันทั้งเว็บ",
+      "mobileFocus": "62% 50%"
+    },
+    "statement": [
+      "กาแฟดีต้องเล่าเรื่องได้",
+      "เว็บของร้านก็เช่นกัน"
+    ],
+    "showcase": {
+      "kind": "desktop",
+      "image": "../../assets/images/work/shogun-coffee/screens/tour-poster-v2.webp",
+      "alt": "หน้าแรก Shogun Coffee",
+      "video": {
+        "mp4": "/videos/work/shogun-coffee-tour-v2.mp4",
+        "webm": "/videos/work/shogun-coffee-tour-v2.webm"
+      }
+    },
+    "story": "Shogun Coffee เป็นเว็บตัวอย่างที่ SOFT Z ทำขึ้นเพื่อโชว์ว่าเว็บคาเฟ่ทำได้มากกว่าหน้าเมนู โทนขาว ดำ ตัดด้วยสีแดง หน้าแรกเป็นภาพร้านเต็มจอที่เปลี่ยนเองแบบภาพยนตร์ ตัวหนังสือบางอ่านสบาย ทุกหน้ามีแอนิเมชันตอนเลื่อน ตั้งแต่หัวข้อที่ค่อยๆ เผยทีละตัวอักษร ไปจนถึงวิดีโอที่เลื่อนแนวนอน",
+    "facts": [
+      {
+        "value": "6",
+        "label": "หน้าเว็บไซต์"
+      },
+      {
+        "value": "27",
+        "label": "รายการในเมนู"
+      },
+      {
+        "value": "9",
+        "label": "สาขาบนแผนที่"
+      },
+      {
+        "value": "4",
+        "label": "ฉากวิดีโอ From bean to cup"
+      }
+    ],
+    "chapters": [
+      {
+        "label": "01 / MENU",
+        "title": "เมนู 27 รายการ กรองหมวดได้ทันที",
+        "body": "แยกหมวด Signature, Espresso Bar, Slow Bar, Non-Coffee และ Bakery กดเปลี่ยนหมวดแล้วการ์ดเรียงใหม่แบบมีแอนิเมชัน ทุกเมนูมีภาพ ราคา และคำอธิบายสั้นๆ",
+        "screens": [
+          {
+            "kind": "desktop",
+            "image": "../../assets/images/work/shogun-coffee/screens/menu-grid-desktop-v2.webp",
+            "alt": "หน้าเมนู 27 รายการ แบ่งหมวด"
+          },
+          {
+            "kind": "mobile",
+            "image": "../../assets/images/work/shogun-coffee/screens/menu-mobile-v2.webp",
+            "alt": "หน้าเมนูบนมือถือ"
+          }
+        ]
+      },
+      {
+        "label": "02 / EVENTS",
+        "title": "หน้าอีเวนต์ นับถอยหลังสด",
+        "body": "หน้า Cupping Night มีตัวนับถอยหลังถึงรอบถัดไปแบบสด รายละเอียดงาน และปุ่มจองที่นั่งผ่าน LINE ใช้ซ้ำได้กับอีเวนต์ครั้งต่อไป",
+        "screens": [
+          {
+            "kind": "desktop",
+            "image": "../../assets/images/work/shogun-coffee/screens/events-desktop-v2.webp",
+            "alt": "หน้าอีเวนต์ Cupping Night พร้อมนับถอยหลัง"
+          },
+          {
+            "kind": "mobile",
+            "image": "../../assets/images/work/shogun-coffee/screens/origins-mobile-v2.webp",
+            "alt": "รายละเอียดอีเวนต์บนมือถือ"
+          }
+        ]
+      },
+      {
+        "label": "03 / STORY",
+        "title": "เล่าเรื่องแบรนด์ด้วยไทม์ไลน์",
+        "body": "หน้า About มีเส้นไทม์ไลน์ที่วาดตามการเลื่อน ตัวเลขที่นับขึ้น และส่วนที่อธิบายความหมายของชื่อ Shogun ให้คนอ่านรู้จักร้านมากขึ้น",
+        "screens": [
+          {
+            "kind": "desktop",
+            "image": "../../assets/images/work/shogun-coffee/screens/story-desktop-v2.webp",
+            "alt": "ไทม์ไลน์เรื่องราวของร้านในหน้า About"
+          },
+          {
+            "kind": "mobile",
+            "image": "../../assets/images/work/shogun-coffee/screens/meaning-mobile-v2.webp",
+            "alt": "ความหมายของชื่อ Shogun บนมือถือ"
+          }
+        ]
+      },
+      {
+        "label": "04 / LOCATIONS",
+        "title": "หาสาขาใกล้คุณบนแผนที่",
+        "body": "หน้า Maps รวม 9 สาขาบนแผนที่จริง ค้นหาตามชื่อหรือย่านได้ กดดูเส้นทางหรือสั่งเดลิเวอรีจากสาขาที่เลือกได้ทันที",
+        "screens": [
+          {
+            "kind": "desktop",
+            "image": "../../assets/images/work/shogun-coffee/screens/locations-desktop-v2.webp",
+            "alt": "ส่วนสาขาในหน้าแรก"
+          },
+          {
+            "kind": "mobile",
+            "image": "../../assets/images/work/shogun-coffee/screens/map-mobile-v2.webp",
+            "alt": "หน้าแผนที่สาขาบนมือถือ"
+          }
+        ]
+      }
+    ],
+    "mobileStrip": {
+      "label": "MOBILE FIRST",
+      "title": "แอนิเมชันครบ แม้บนมือถือ",
+      "body": "ทุกหน้าออกแบบจอมือถือแยก ฉาก From bean to cup เปลี่ยนเป็นการ์ดเรียงลง และคนที่ตั้งค่าลดการเคลื่อนไหวไว้จะเห็นหน้าแบบนิ่งที่อ่านง่าย",
+      "screens": [
+        {
+          "kind": "mobile",
+          "image": "../../assets/images/work/shogun-coffee/screens/bean-mobile-v2.webp",
+          "alt": "ฉาก From bean to cup บนมือถือ"
+        },
+        {
+          "kind": "mobile",
+          "image": "../../assets/images/work/shogun-coffee/screens/specialty-mobile-v2.webp",
+          "alt": "ส่วน What is Specialty บนมือถือ"
+        },
+        {
+          "kind": "mobile",
+          "image": "../../assets/images/work/shogun-coffee/screens/about-mobile-v2.webp",
+          "alt": "หน้าเกี่ยวกับเราบนมือถือ"
+        },
+        {
+          "kind": "mobile",
+          "image": "../../assets/images/work/shogun-coffee/screens/contact-mobile-v2.webp",
+          "alt": "หน้าติดต่อบนมือถือ"
+        }
+      ]
+    },
+    "photos": {
+      "label": "GALLERY",
+      "title": "ภาพที่ชวนหิวทุกหน้า",
+      "body": "ภาพเมนูและบรรยากาศจัดโทนให้เข้ากันทั้งเว็บ ทั้งเครื่องดื่ม Signature เบเกอรี่ และการคั่วเมล็ด",
+      "items": [
+        {
+          "image": "../../assets/images/work/shogun-coffee/photos/special-orange.webp",
+          "alt": "เครื่องดื่ม Orange Brew"
+        },
+        {
+          "image": "../../assets/images/work/shogun-coffee/photos/special-dirty.webp",
+          "alt": "เครื่องดื่ม Kuro Dirty"
+        },
+        {
+          "image": "../../assets/images/work/shogun-coffee/photos/about-1.webp",
+          "alt": "เมล็ดกาแฟในเครื่องคั่ว"
+        },
+        {
+          "image": "../../assets/images/work/shogun-coffee/photos/p-latte.webp",
+          "alt": "ลาเต้อาร์ตรูปหัวใจ"
+        },
+        {
+          "image": "../../assets/images/work/shogun-coffee/photos/special-tonic.webp",
+          "alt": "เครื่องดื่ม Espresso Tonic"
+        },
+        {
+          "image": "../../assets/images/work/shogun-coffee/photos/p-croissant.webp",
+          "alt": "ครัวซองต์"
+        }
+      ]
+    },
+    "pricing": {
+      "total": 24900,
+      "totalLabel": "ราคาประเมิน",
+      "title": "ประเมินที่ 24,900 บาท",
+      "intro": "ถ้าทำเว็บแบบนี้ให้ร้านของคุณ ราคาจะอยู่ที่แพ็กเกจ Premium Website (6–10 หน้า) ตารางนี้แยกให้เห็นว่าแต่ละส่วนคืออะไร",
+      "items": [
+        {
+          "name": "วางโครงเว็บและ UX",
+          "detail": "Sitemap 6 หน้า ลำดับเนื้อหา และเส้นทางไปถึงการสั่งเดลิเวอรีหรือจองอีเวนต์",
+          "amount": 2500
+        },
+        {
+          "name": "ออกแบบ UI ทั้งเว็บ",
+          "detail": "ออกแบบทุกหน้า ทั้งจอคอมและมือถือ ตามโทนและฟอนต์ของแบรนด์",
+          "amount": 7000
+        },
+        {
+          "name": "พัฒนาเว็บไซต์ 6 หน้า",
+          "detail": "เขียนเว็บจริง รองรับทุกขนาดจอ โหลดวิดีโอเฉพาะตอนใกล้เห็น",
+          "amount": 7400
+        },
+        {
+          "name": "แอนิเมชันและ Interaction",
+          "detail": "ภาพหน้าแรกเปลี่ยนเองพร้อมซูมช้าๆ หัวข้อเผยทีละตัวอักษร ภาพ parallax วิดีโอเลื่อนแนวนอน และปุ่มแม่เหล็ก",
+          "amount": 4000
+        },
+        {
+          "name": "ฟีเจอร์พิเศษ",
+          "detail": "เมนู 27 รายการกรองหมวด นับถอยหลังอีเวนต์ แผนที่ 9 สาขา และป๊อปอัปสั่งเดลิเวอรีผ่าน LINE MAN หรือ Grab",
+          "amount": 3000
+        },
+        {
+          "name": "SEO พื้นฐานและขึ้นเว็บ",
+          "detail": "ตั้งชื่อหน้าและคำอธิบายทุกหน้า ขึ้นระบบ และทดสอบก่อนส่งมอบ",
+          "amount": 1000
+        }
+      ],
+      "notes": [
+        "ราคาตามแพ็กเกจ Premium Website รวมโดเมน .com และโฮสติ้งปีแรก ยังไม่รวมภาษีมูลค่าเพิ่ม",
+        "เว็บตัวอย่างนี้ยังไม่ได้เปิดใช้งานจริง ภาพประกอบเป็นภาพฟรีจาก Unsplash และวิดีโอจาก Mixkit"
+      ]
+    },
+    "stack": [
+      "Figma",
+      "Nuxt",
+      "TypeScript",
+      "GSAP",
+      "Vercel"
+    ]
+  }
+}

@@ -1,0 +1,88 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../../assets/images/brand/softz-logo.png';
+import { PRIMARY_NAV } from '../../config/navigation';
+import { ROUTES } from '../../config/routes';
+import { SITE } from '../../config/site';
+import { getProductGroups, isInDevelopment } from '../../lib/products';
+import Icon from '../ui/Icon.astro';
+import LineButton from '../ui/LineButton.astro';
+import NavSearch from './NavSearch.astro';
+
+const productGroups = await getProductGroups();
+const currentPath = Astro.url.pathname;
+---
+
+<header class="nav">
+  <div class="container-page nav-inner">
+    <a class="nav-logo" href={ROUTES.home} aria-label={`${SITE.name} หน้าแรก`}>
+      <Image src={logo} alt={SITE.name} height={22} width={Math.round((logo.width / logo.height) * 22)} layout="fixed" loading="eager" />
+    </a>
+
+    <nav aria-label="เมนูหลัก">
+      <ul class="nav-menu">
+        {
+          productGroups.map((group) => {
+            const isGroupActive = group.products.some((product) => ROUTES.product(product.id) === currentPath);
+            return (
+              <li>
+                <button
+                  type="button"
+                  class:list={['nav-link', { active: isGroupActive }]}
+                  data-dropdown
+                  aria-expanded="false"
+                  aria-controls={group.dropdownId}
+                >
+                  {group.navLabel} <Icon name="chevron" />
+                </button>
+                <div class="dropdown glass" id={group.dropdownId}>
+                  <div class="dd-label">{group.groupLabel}</div>
+                  {group.products.map((product) => (
+                    <a
+                      href={ROUTES.product(product.id)}
+                      aria-current={ROUTES.product(product.id) === currentPath ? 'page' : undefined}
+                    >
+                      <b>
+                        {product.data.navLabel}
+                        {isInDevelopment(product) && <span class="tag tag-orange">{product.data.hero.tag}</span>}
+                      </b>
+                      <Icon name="arrow" />
+                      <small>{product.data.navDescription}</small>
+                    </a>
+                  ))}
+                </div>
+              </li>
+            );
+          })
+        }
+        {
+          PRIMARY_NAV.map((link) => (
+            <li>
+              <a
+                class:list={['nav-link', { active: link.href === currentPath }]}
+                href={link.href}
+                aria-current={link.href === currentPath ? 'page' : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <NavSearch />
+      <LineButton message="สวัสดีครับ อยากขอใบเสนอราคา" size="sm" class="nav-quote" aria-label="ขอใบเสนอราคาทาง LINE">
+        <span class="t">ขอใบเสนอราคา</span>
+      </LineButton>
+      <button type="button" class="menu-btn" data-menu-open aria-controls="menu" aria-haspopup="dialog">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>เมนู
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  import '../../scripts/site-chrome';
+</script>

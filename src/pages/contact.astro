@@ -1,0 +1,57 @@
+---
+import BriefForm from '../components/sections/contact/BriefForm.astro';
+import ContactChannels from '../components/sections/contact/ContactChannels.astro';
+import LineButton from '../components/ui/LineButton.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import { ROUTES } from '../config/routes';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'ติดต่อ';
+const description = 'ทักมาได้ทุกช่องทาง ตอบเร็วที่สุดทาง LINE ปรึกษาและขอใบเสนอราคาฟรี';
+const nextSteps = ['ทีมโทรหรือทักกลับเพื่อคุยรายละเอียด', 'ส่งใบเสนอราคาพร้อมขอบเขตงาน', 'ตกลงแล้วเริ่มงานได้ทันที'];
+---
+
+<BaseLayout {title} {description} breadcrumbs={[{ name: title, path: ROUTES.contact }]}>
+  <section class="split-hero">
+    <div class="container-page page-grid">
+      <div class="copy">
+        <SectionHeading
+          as="h1"
+          size="1"
+          label="CONTACT"
+          heading={['คุยกับ', 'ทีมงานตัวจริง']}
+          sub={['ทักมาได้ทุกช่องทาง ตอบเร็วที่สุดทาง LINE', 'ปรึกษาและขอใบเสนอราคาฟรี']}
+        />
+        <div class="btn-row reveal">
+          <LineButton message="สวัสดีครับ">เปิดแชท LINE</LineButton>
+          <a class="btn btn-glass" href="#brief">ส่งรายละเอียดงาน</a>
+        </div>
+      </div>
+      <div class="side">
+        <ContactChannels />
+      </div>
+    </div>
+  </section>
+
+  <section class="section tone" id="brief" aria-labelledby="brief-heading">
+    <div class="container-page page-grid brief">
+      <div>
+        <SectionHeading label="SEND A BRIEF" heading="ส่งรายละเอียดงาน" sub="กรอกสั้นๆ ทีมจะติดต่อกลับ พร้อมแพ็กเกจที่เหมาะกับคุณ" id="brief-heading" />
+        <div class="next reveal">
+          <h3>หลังส่งข้อมูล</h3>
+          <ol>
+            {
+              nextSteps.map((step, index) => (
+                <li>
+                  <b>{String(index + 1).padStart(2, '0')}</b>
+                  {step}
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+      </div>
+      <BriefForm />
+    </div>
+  </section>
+</BaseLayout>

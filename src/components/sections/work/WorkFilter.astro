@@ -1,0 +1,61 @@
+---
+/**
+ * Work page filters: category buttons grouped like the nav (with how many works each has), then a style dropdown.
+ * Wide screens show them as a vertical list in the page's sidebar; narrow screens as one scrolling pill under the nav.
+ * scripts/work-filter.ts does the filtering. Without JavaScript nothing filters and every case study stays visible.
+ */
+interface FilterGroup {
+  label: string;
+  items: { id: string; label: string }[];
+}
+
+interface Props {
+  groups: FilterGroup[];
+  styles: { id: string; label: string }[];
+  counts: Record<string, number>;
+  total: number;
+}
+
+const { groups, styles, counts, total } = Astro.props;
+---
+
+<nav class="work-filter" aria-label="กรองผลงาน" data-work-filter>
+  <div class="work-filter-track">
+    <button type="button" data-filter="all" aria-pressed="true">
+      <span>ทั้งหมด</span><span class="work-filter-count">{total}</span>
+    </button>
+    {
+      groups.map((group) => (
+        <span class="work-filter-group" role="group" aria-label={group.label}>
+          <span class="work-filter-group-label" aria-hidden="true">
+            {group.label}
+          </span>
+          {group.items.map((item) => (
+            <button type="button" data-filter={item.id} aria-pressed="false" class:list={{ 'is-empty': !counts[item.id] }}>
+              <span>{item.label}</span>
+              <span class="work-filter-count">{counts[item.id] ?? 0}</span>
+            </button>
+          ))}
+        </span>
+      ))
+    }
+    {
+      styles.length > 0 && (
+        <span class="work-filter-group work-filter-group-style">
+          <span class="work-filter-group-label" aria-hidden="true">
+            Style
+          </span>
+          <label class="work-style">
+            <span class="sr-only">สไตล์งานออกแบบ</span>
+            <select data-style-filter aria-label="Style">
+              <option value="">All styles</option>
+              {styles.map((style) => (
+                <option value={style.id}>{style.label}</option>
+              ))}
+            </select>
+          </label>
+        </span>
+      )
+    }
+  </div>
+</nav>

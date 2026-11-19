@@ -1,0 +1,274 @@
+/* Every hero ends with the same gap so the divider below it never touches content.
+   overflow-x: clip (not hidden) so devices hanging below the stage are not cut off. */
+.hero,
+.p-hero,
+.split-hero {
+  padding-top: var(--space-hero-start);
+  padding-bottom: var(--space-hero-end);
+  overflow: visible;
+  overflow-x: clip;
+}
+
+.hero,
+.p-hero {
+  text-align: center;
+}
+
+.hero .heading {
+  gap: 20px;
+}
+
+.hero .sub {
+  max-width: 720px;
+}
+
+.hero .btn-row,
+.p-hero .btn-row {
+  justify-content: center;
+  margin-top: var(--space-actions);
+}
+
+.from {
+  margin-top: 20px;
+  font-size: 15px;
+  color: var(--gray);
+}
+
+/*
+  ---------- device stage ----------
+  A hero with a stage fits the first screen: the stage takes the height left under the text (flex: 1),
+  and the devices scale to that height through container query units (cqh).
+  --stage-ratio is the composition's width ÷ height, so width = ratio × stage height never overflows it.
+  The 3D tilt that flattens on scroll is driven by scripts/device-stage.ts (--tilt / --sc).
+*/
+:is(.hero, .p-hero):has(.stage) > .container-page {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+/* Heroes with devices scale their headline with the screen height too, leaving the devices room on short laptop screens. */
+.hero:has(.stage) h1 {
+  font-size: clamp(42px, min(6.2vw, 8.5vh), 88px);
+}
+
+.p-hero:has(.stage) h1 {
+  font-size: clamp(36px, min(4.8vw, 7vh), 66px);
+}
+
+/* Ratios measured from the rendered mockups (incl. devices hanging below the laptop): combos 1.91–2.10, trio 1.67. */
+.stage {
+  --stage-ratio: 1.9;
+  position: relative;
+  flex: 1 1 0;
+  min-height: 240px;
+  container-type: size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1080px;
+  margin: var(--space-stage) auto 0;
+  perspective: 1800px;
+}
+
+.stage:has(.trio) {
+  --stage-ratio: 1.65;
+}
+
+.stage-inner {
+  position: relative;
+  width: min(100%, calc(var(--stage-ratio) * 100cqh));
+  transform-style: preserve-3d;
+  transform: rotateX(var(--tilt, 18deg)) scale(var(--sc, 0.9));
+  transform-origin: 50% 0;
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+.stage .combo .laptop {
+  width: 88%;
+}
+
+.stage .combo.solo .laptop {
+  width: 100%;
+}
+
+.stage .combo .phone {
+  width: 18%;
+  right: 0;
+  bottom: -3%;
+}
+
+.stage .trio {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .hero .btn-row,
+  .p-hero .btn-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .stage {
+    min-height: 200px;
+  }
+}
+
+/* ---------- split hero (pricing, contact) ---------- */
+.split-hero {
+  text-align: left;
+}
+
+.split-hero .page-grid {
+  align-items: center;
+}
+
+.split-hero .copy {
+  grid-column: 1 / span 6;
+}
+
+.split-hero .side {
+  grid-column: 7 / span 6;
+}
+
+.split-hero .btn-row {
+  margin-top: var(--space-actions);
+}
+
+@media (max-width: 1023px) {
+  .split-hero .copy,
+  .split-hero .side {
+    grid-column: 1 / -1;
+  }
+
+  .split-hero .side {
+    margin-top: var(--space-stack);
+  }
+}
+
+/* ---------- product hero: text left, large devices right ---------- */
+@media (min-width: 1024px) {
+  /* Only product pages (they have .p-hero-grid); About and other plain heroes stay centred. */
+  .p-hero:has(.p-hero-grid) {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - var(--nav-h));
+  }
+
+  /* Beats ":is(.hero, .p-hero):has(.stage) > .container-page" (flex column) above. */
+  .p-hero:has(.stage) > .container-page.p-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(340px, 4.2fr) minmax(0, 7.8fr);
+    align-items: center;
+    gap: clamp(24px, 3vw, 56px);
+    width: 100%;
+  }
+
+  .p-hero-text .heading {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .p-hero-text .sub {
+    margin-inline: 0;
+  }
+
+  .p-hero-grid .btn-row {
+    justify-content: flex-start;
+  }
+
+  .p-hero:has(.p-hero-grid) h1 {
+    font-size: clamp(34px, min(3.6vw, 6.6vh), 58px);
+  }
+
+  /* The stage fills the right column and is sized by its height: as tall as the screen allows. */
+  .p-hero .stage {
+    margin: 0;
+    max-width: none;
+    flex: none;
+    height: min(calc(100vh - var(--nav-h) - 2 * var(--space-hero-start, 48px)), 62vw * 0.6);
+  }
+
+  .p-hero .stage-inner {
+    transform: rotateX(calc(var(--tilt, 18deg) * 0.5)) scale(var(--sc, 0.96));
+  }
+}
+
+@media (max-width: 1023px) {
+  .p-hero-text .heading {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* ---------- home hero: devices left, text right (same grid as the product hero, mirrored) ---------- */
+@media (min-width: 1024px) {
+  .hero:has(.hero-grid) {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - var(--nav-h));
+  }
+
+  .hero:has(.stage) > .container-page.hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 7.8fr) minmax(340px, 4.2fr);
+    align-items: center;
+    gap: clamp(24px, 3vw, 56px);
+    width: 100%;
+  }
+
+  .hero-grid .stage {
+    order: -1;
+    margin: 0;
+    max-width: none;
+    flex: none;
+    height: min(calc(100vh - var(--nav-h) - 2 * var(--space-hero-start)), 62vw * 0.6);
+  }
+
+  .hero-grid .stage-inner {
+    transform: rotateX(calc(var(--tilt, 18deg) * 0.5)) scale(var(--sc, 0.96));
+  }
+
+  .hero-text .heading {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .hero-text .sub {
+    margin-inline: 0;
+  }
+
+  .hero-grid .btn-row {
+    justify-content: flex-start;
+  }
+
+  .hero:has(.hero-grid) h1 {
+    font-size: clamp(36px, min(3.8vw, 7vh), 62px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero-text .heading {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Short hero subtitles: never justified (one wrapped line would spread its few spaces wide), slightly smaller so each
+   line fits the narrower text column. */
+.hero-text .sub,
+.p-hero-text .sub {
+  text-align: inherit !important;
+  text-wrap: balance;
+}
+
+@media (min-width: 1024px) {
+  .hero-text .sub {
+    font-size: clamp(16px, 1.25vw, 19px);
+  }
+}

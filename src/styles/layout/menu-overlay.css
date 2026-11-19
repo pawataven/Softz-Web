@@ -1,0 +1,174 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.4s var(--ease),
+    visibility 0.4s;
+  overflow: auto;
+}
+
+/* Visibility flips instantly on open so the close button can take focus right away; it still lingers during the fade-out. */
+.overlay.open {
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.4s var(--ease),
+    visibility 0s;
+}
+
+.overlay > .container-page {
+  width: 100%;
+}
+
+.overlay-top {
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: none;
+}
+
+.overlay-top img {
+  height: 22px;
+  width: auto;
+}
+
+.overlay-body {
+  flex: 1;
+  padding-top: 88px;
+  padding-bottom: 48px;
+}
+
+.overlay > .container-page:last-child {
+  flex: none;
+}
+
+.overlay-groups {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 48px var(--gutter);
+}
+
+.overlay-groups h2 {
+  margin: 0 0 24px;
+  font: 400 14px/1.4 var(--th);
+  color: var(--dim);
+}
+
+.overlay-groups ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.overlay-groups a.big {
+  font: 600 32px/1.35 var(--th);
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #d7d8db;
+  transition:
+    color 0.25s,
+    transform 0.4s var(--ease);
+}
+
+.overlay-groups a.big:hover {
+  color: #fff;
+  transform: translateX(6px);
+}
+
+.overlay.open .overlay-groups > div {
+  animation: menu-in 0.7s var(--ease) both;
+}
+
+.overlay.open .overlay-groups > div:nth-child(2) {
+  animation-delay: 0.05s;
+}
+
+.overlay.open .overlay-groups > div:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+.overlay.open .overlay-groups > div:nth-child(4) {
+  animation-delay: 0.15s;
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.overlay-contact dl {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 12px 8px;
+  margin: 0 0 24px;
+  font-size: 15px;
+}
+
+.overlay-contact dt {
+  color: var(--dim);
+}
+
+.overlay-contact dd {
+  margin: 0;
+}
+
+.overlay-foot {
+  border-top: 1px solid var(--line);
+  padding: 24px 0 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--dim);
+  font: 400 14px var(--en);
+}
+
+.close-btn .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+@media (max-width: 1023px) {
+  .overlay-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .overlay-groups a.big {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 767px) {
+  .overlay-body {
+    padding-top: 32px;
+  }
+
+  .overlay-groups {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .overlay-groups a.big {
+    font-size: 24px;
+  }
+}

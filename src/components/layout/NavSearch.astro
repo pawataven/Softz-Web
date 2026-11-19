@@ -1,0 +1,102 @@
+---
+/**
+ * Site search in the nav bar. The index (services, their packages and FAQ, case studies, pages) is built here at
+ * build time and embedded as JSON; scripts/site-search.ts suggests matches as the visitor types and opens the
+ * chosen page. Wide screens: a field in the bar. Narrower: a button that opens the field across the bar.
+ */
+import { getCollection } from 'astro:content';
+import { PRODUCT_CATEGORIES } from '../../config/navigation';
+import { ROUTES } from '../../config/routes';
+import { SEARCH_KEYWORDS } from '../../config/search';
+import { getProducts, startingPriceText } from '../../lib/products';
+import Icon from '../ui/Icon.astro';
+
+export interface SearchEntry {
+  title: string;
+  /** Small grey line under the title. */
+  meta: string;
+  group: 'บริการ' | 'แพ็กเกจ' | 'ผลงาน' | 'หน้า' | 'คำถามที่พบบ่อย';
+  href: string;
+  /** Searched, never shown. */
+  text: string;
+  /** Shown before typing. */
+  popular?: boolean;
+}
+
+const products = await getProducts();
+const works = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+const kw = (id: string) => (SEARCH_KEYWORDS[id] ?? []).join(' ');
+
+const entries: SearchEntry[] = [
+  ...products.map((p) => ({
+    title: p.data.summary.title,
+    meta: `${p.data.englishName} · ${startingPriceText(p)}`,
+    group: 'บริการ' as const,
+    href: ROUTES.product(p.id),
+    text: [p.data.englishName, p.data.navLabel, p.data.label, p.data.navDescription, p.data.summary.description, PRODUCT_CATEGORIES[p.data.category].shortLabel, kw(p.id)].join(' '),
+    popular: true,
+  })),
+  ...works.map((w) => ({
+    title: w.data.title,
+    meta: `ผลงาน · ${w.data.styles.join(' · ')}`,
+    group: 'ผลงาน' as const,
+    href: w.data.detail ? ROUTES.caseStudy(w.id) : ROUTES.work,
+    text: [w.data.description, w.data.tags.join(' '), w.data.styles.join(' '), w.data.liveUrl ?? '', kw(w.id)].join(' '),
+    popular: true,
+  })),
+  ...[
+    { id: 'work', title: 'ผลงานทั้งหมด', href: ROUTES.work, meta: 'เว็บไซต์และระบบที่เราทำ' },
+    { id: 'pricing', title: 'ราคาและแพ็กเกจ', href: ROUTES.pricing, meta: 'เทียบราคาทุกบริการ' },
+    { id: 'about', title: 'เกี่ยวกับเรา', href: ROUTES.about, meta: 'ทีม SOFT Z' },
+    { id: 'contact', title: 'ติดต่อเรา', href: ROUTES.contact, meta: 'LINE โทร อีเมล' },
+    { id: 'privacy', title: 'นโยบายความเป็นส่วนตัว', href: ROUTES.privacy, meta: 'PDPA และคุกกี้' },
+  ].map((page) => ({ title: page.title, meta: page.meta, group: 'หน้า' as const, href: page.href, text: kw(page.id) })),
+  ...products.flatMap((p) =>
+    p.data.plans.map((plan) => ({
+      title: plan.name,
+      meta: `แพ็กเกจ ${p.data.summary.title}`,
+      group: 'แพ็กเกจ' as const,
+      href: `${ROUTES.product(p.id)}#plans`,
+      text: [p.data.englishName, p.data.summary.title, kw(p.id)].join(' '),
+    })),
+  ),
+  ...products.flatMap((p) =>
+    p.data.faq.map((item) => ({
+      title: item.question,
+      meta: p.data.summary.title,
+      group: 'คำถามที่พบบ่อย' as const,
+      href: `${ROUTES.product(p.id)}#faq`,
+      text: item.answer,
+    })),
+  ),
+];
+---
+
+<div class="nav-search" data-search>
+  <button type="button" class="nav-search-toggle" data-search-open aria-label="ค้นหา" aria-expanded="false" aria-controls="site-search-input">
+    <Icon name="search" />
+  </button>
+  <div class="nav-search-box" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-owns="site-search-list">
+    <Icon name="search" />
+    <input
+      id="site-search-input"
+      type="search"
+      placeholder="ค้นหาบริการ ผลงาน…"
+      autocomplete="off"
+      spellcheck="false"
+      aria-label="ค้นหาในเว็บไซต์"
+      aria-autocomplete="list"
+      aria-controls="site-search-list"
+      enterkeyhint="search"
+    />
+    <button type="button" class="nav-search-close" data-search-close aria-label="ปิดการค้นหา"><Icon name="close" /></button>
+  </div>
+  <div class="nav-search-panel glass" data-search-panel hidden>
+    <ul id="site-search-list" role="listbox" aria-label="ผลการค้นหา" data-search-list></ul>
+  </div>
+  <script type="application/json" data-search-index set:html={JSON.stringify(entries)} />
+</div>
+
+<script>
+  import '../../scripts/site-search';
+</script>

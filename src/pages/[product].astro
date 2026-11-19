@@ -1,0 +1,50 @@
+---
+import type { GetStaticPaths } from 'astro';
+import ContactCta from '../components/sections/ContactCta.astro';
+import FaqSection from '../components/sections/FaqSection.astro';
+import FeatureBento from '../components/sections/FeatureBento.astro';
+import PlanGrid from '../components/sections/product/PlanGrid.astro';
+import ProductHero from '../components/sections/product/ProductHero.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import { ROUTES } from '../config/routes';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getProducts, type Product } from '../lib/products';
+import { faqSchema, serviceSchema } from '../lib/seo/schema';
+
+export const getStaticPaths = (async () => {
+  const products = await getProducts();
+  return products.map((product) => ({
+    params: { product: product.id },
+    props: { product },
+  }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const { seo, faq, features } = product.data;
+const site = Astro.site!;
+const pageUrl = new URL(ROUTES.product(product.id), site);
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  breadcrumbs={[{ name: seo.title, path: ROUTES.product(product.id) }]}
+  schema={[serviceSchema(product, pageUrl, site), ...(faq.length > 0 ? [faqSchema(faq)] : [])]}
+>
+  <ProductHero product={product} />
+
+  <section class="section" aria-labelledby="features-heading">
+    <div class="container-page">
+      <SectionHeading label="WHAT'S INSIDE" heading="ในแพ็กเกจมีอะไรบ้าง" sub={features.intro} id="features-heading" />
+      <FeatureBento items={features.items} columns={4} />
+    </div>
+  </section>
+
+  <PlanGrid product={product} />
+  {faq.length > 0 && <FaqSection items={faq} />}
+  <ContactCta />
+</BaseLayout>

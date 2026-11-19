@@ -1,0 +1,250 @@
+.name-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gutter);
+  margin-top: var(--space-stack);
+}
+
+.name-grid .panel {
+  padding: 48px;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.name-grid .word {
+  font: 600 clamp(96px, 11vw, 160px) / 0.9 var(--en);
+  letter-spacing: -0.05em;
+  margin-bottom: auto;
+}
+
+.name-grid .word.is-accent {
+  color: var(--orange);
+}
+
+.name-grid h3 {
+  font: 600 24px var(--th);
+  margin-top: 40px;
+}
+
+.name-grid p {
+  color: var(--gray);
+  margin-top: 8px;
+}
+
+@media (max-width: 1023px) {
+  .name-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .name-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .name-grid .panel {
+    padding: 32px;
+    min-height: 280px;
+  }
+}
+
+/* ---------- product carousel ---------- */
+.carousel {
+  position: relative;
+  margin-top: var(--space-stack);
+}
+
+.car-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scroll-padding-inline: var(--margin);
+  padding: 4px var(--margin) 24px;
+  margin: 0 calc(-1 * var(--margin));
+  scrollbar-width: none;
+}
+
+.car-track::-webkit-scrollbar {
+  display: none;
+}
+
+.car-card {
+  flex: 0 0 340px;
+  scroll-snap-align: start;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.car-card .art {
+  width: 100%;
+  aspect-ratio: 1 / 1.08;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12% 10%;
+  transition: transform 0.6s var(--ease);
+}
+
+.car-card:hover .art {
+  transform: scale(1.02);
+}
+
+.car-card .art .laptop {
+  width: 118%;
+  padding: 0 6%;
+  flex: none;
+}
+
+.car-card .art .phone {
+  width: 46%;
+}
+
+.car-card .art .trio {
+  gap: 3%;
+}
+
+.car-card .art .trio .phone {
+  width: 34%;
+}
+
+.car-card .art .trio .phone:nth-child(2) {
+  width: 38%;
+}
+
+.car-card .new {
+  margin-top: 28px;
+  font-size: 12px;
+  color: var(--gray);
+  min-height: 18px;
+}
+
+.car-card h3 {
+  font: 600 24px/1.3 var(--th);
+  margin-top: 4px;
+}
+
+.car-card p {
+  color: var(--gray);
+  font-size: 15px;
+  margin-top: 8px;
+  max-width: 280px;
+  min-height: 48px;
+}
+
+.car-card .pr {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--fg);
+}
+
+.car-card .acts {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.car-card .acts .btn {
+  height: 38px;
+  padding: 0 18px;
+  font-size: 14px;
+}
+
+.car-card .acts a.more {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--line-strong);
+  font-size: 14px;
+}
+
+.car-card .acts a.more:hover {
+  text-decoration: underline;
+}
+
+.g1 {
+  background: radial-gradient(120% 90% at 50% 0%, #3a2418, #121214 70%);
+}
+
+.g2 {
+  background: radial-gradient(120% 90% at 50% 0%, #202634, #111214 70%);
+}
+
+.g3 {
+  background: radial-gradient(120% 90% at 50% 0%, #3b1f14, #141213 70%);
+}
+
+.g4 {
+  background: radial-gradient(120% 90% at 50% 0%, #2a2a2e, #111214 70%);
+}
+
+.g5 {
+  background: radial-gradient(120% 90% at 50% 0%, #33241a, #121213 70%);
+}
+
+.g6 {
+  background: radial-gradient(120% 90% at 50% 0%, #1e2a26, #111214 70%);
+}
+
+.car-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.car-nav button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+  background: var(--surface2);
+  color: var(--fg);
+  display: grid;
+  place-items: center;
+  transition:
+    background 0.2s,
+    opacity 0.2s;
+}
+
+.car-nav button:hover {
+  background: var(--highlight);
+}
+
+.car-nav button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.car-nav svg {
+  width: 12px;
+  height: 12px;
+}
+
+@media (max-width: 767px) {
+  .car-card {
+    flex-basis: 280px;
+  }
+}
+
+.car-track {
+  cursor: grab;
+}
+
+.car-track.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.car-track.is-dragging a {
+  pointer-events: none;
+}

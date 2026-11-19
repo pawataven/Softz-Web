@@ -1,0 +1,94 @@
+:root {
+  --bg: #08090a;
+  --surface: #111214;
+  --surface2: #18191c;
+  --field: #0e0f11;
+  --line: #222326;
+  --line-strong: #2e2f33;
+  --highlight: #2a2b2e;
+  --fg: #f5f5f6;
+  --gray: #9b9ca3;
+  --dim: #6e6f76;
+  --orange: #ff6b2b;
+  --orange-tint: #2a1a12;
+  --orange-line: #7a3a1c;
+  --ok: #3dd68c;
+  --warn: #f5b83d;
+  --err: #ff5a5f;
+  --tone: #0f1012;
+  --tone-panel: #15161a;
+  --hair: rgba(255, 255, 255, 0.08);
+
+  /* Font variables come from Astro's <Font /> component in BaseLayout. */
+  --en: var(--font-inter);
+  --th: var(--font-noto-sans-thai);
+
+  /*
+    Page grid from Figma: 12 columns on desktop, 8 on tablet, 4 on mobile.
+    Desktop keeps a fixed 120px side margin and the content stretches between them (1200px at the 1440 Figma frame).
+    --container caps the content so the margin is exactly 120px on every screen up to 1920px; only ultra-wide screens get more.
+  */
+  --container: 1680px;
+  --grid-columns: 12;
+  --gutter: 24px;
+  --margin: 120px;
+  /* One column plus one gutter on the active grid, as a length (100% resolves against the element using it). */
+  --col1: calc((100% - (var(--grid-columns) - 1) * var(--gutter)) / var(--grid-columns) + var(--gutter));
+  --r-lg: 28px;
+  --r-md: 20px;
+  --r-sm: 12px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --nav-h: 64px;
+
+  /*
+    Vertical rhythm. Sections are full-screen (see base.css), so spacing scales with the viewport height:
+    short laptop screens get tighter gaps and the section still fits, tall screens get the full Figma values.
+    The px floor is also the minimum distance between content and a section divider.
+  */
+  --space-section: clamp(56px, 7vh, 120px);
+  --space-section-tight: clamp(48px, 6vh, 96px);
+  --space-hero-start: clamp(24px, 4vh, 96px);
+  /* Below a hero; also leaves room for device mockups that hang below the stage. */
+  --space-hero-end: clamp(56px, 6vh, 120px);
+  /* Hero text → device stage. */
+  --space-stage: clamp(24px, 4vh, 96px);
+  /* Section heading → section content. */
+  --space-stack: clamp(40px, 5.5vh, 72px);
+  /* Heading → its button row. */
+  --space-actions: clamp(24px, 4vh, 40px);
+
+  color-scheme: dark;
+}
+
+@media (max-width: 1279px) {
+  :root {
+    --margin: 48px;
+  }
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --grid-columns: 8;
+    --space-section: clamp(64px, 8vh, 112px);
+    --space-section-tight: clamp(56px, 6vh, 88px);
+    --space-hero-end: clamp(48px, 7vh, 96px);
+    --space-stack: clamp(40px, 5vh, 56px);
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --grid-columns: 4;
+    --margin: 20px;
+    --gutter: 16px;
+    --r-lg: 22px;
+    --nav-h: 60px;
+    --space-section: clamp(56px, 8vh, 88px);
+    --space-section-tight: clamp(48px, 6vh, 64px);
+    --space-hero-start: 40px;
+    --space-hero-end: clamp(40px, 7vh, 72px);
+    --space-stage: 40px;
+    --space-stack: 40px;
+    --space-actions: 28px;
+  }
+}

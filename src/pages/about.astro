@@ -1,0 +1,66 @@
+---
+import ContactCta from '../components/sections/ContactCta.astro';
+import FeatureBento from '../components/sections/FeatureBento.astro';
+import ProductCarousel from '../components/sections/about/ProductCarousel.astro';
+import LineButton from '../components/ui/LineButton.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import { ROUTES } from '../config/routes';
+import { VALUES } from '../data/about';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'เกี่ยวกับเรา';
+const description = 'ทีมคนรุ่นใหม่ที่ออกแบบและพัฒนาซอฟต์แวร์ให้ธุรกิจไทย';
+---
+
+<BaseLayout {title} {description} breadcrumbs={[{ name: title, path: ROUTES.about }]}>
+  <section class="p-hero">
+    <div class="container-page">
+      <SectionHeading
+        as="h1"
+        size="display"
+        label="ABOUT SOFT Z"
+        heading={['ออกแบบให้เข้าใจง่าย', 'ทำระบบให้ใช้ได้จริง']}
+        sub={['ทีมคนรุ่นใหม่ที่ออกแบบและพัฒนาซอฟต์แวร์', 'ให้ธุรกิจไทยใช้เทคโนโลยีได้ง่ายและคุ้ม']}
+        center
+      />
+      <div class="btn-row reveal">
+        <LineButton message="สวัสดีครับ อยากคุยกับทีม SOFT Z">คุยกับทีม</LineButton>
+        <a class="btn btn-glass" href="#build">ดูผลิตภัณฑ์</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="name-heading">
+    <div class="container-page">
+      <SectionHeading label="OUR NAME" heading="Soft meets Z." sub="สองคำในชื่อ คือสองอย่างที่ทุกงานของเราต้องมี" thai={false} id="name-heading" />
+      <div class="name-grid stagger">
+        <article class="panel">
+          <span class="word">Soft</span>
+          <h3>ออกแบบที่เข้าใจคน</h3>
+          <p>เริ่มจากธุรกิจและลูกค้าของคุณ<br />ออกแบบให้ใช้ง่ายและเป็นแบรนด์ของคุณเอง</p>
+        </article>
+        <article class="panel">
+          <span class="word is-accent">Z</span>
+          <h3>ระบบที่ทำงานได้จริง</h3>
+          <p>เขียนระบบให้มีโครงสร้าง ดูแลง่าย<br />ขยายต่อได้ และส่งมอบโค้ดให้คุณ</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tone" aria-labelledby="values-heading">
+    <div class="container-page">
+      <SectionHeading label="HOW WE WORK" heading="สิ่งที่เรายึดในทุกงาน" sub="สี่ข้อที่ใช้ตัดสินใจในทุกงาน" id="values-heading" />
+      <FeatureBento items={VALUES} columns={6} />
+    </div>
+  </section>
+
+  <section class="section" id="build" aria-labelledby="build-heading">
+    <div class="container-page">
+      <SectionHeading label="WHAT WE BUILD" heading="บริการทั้งหมดของเรา" sub="ทำให้เฉพาะคุณ 3 อย่าง และซอฟต์แวร์เช่าใช้ 3 ตัว" id="build-heading" />
+      <ProductCarousel />
+    </div>
+  </section>
+
+  <ContactCta sub="อยากรู้จักทีมมากขึ้น ทักมาคุยได้เลย" showContactBar={false} />
+</BaseLayout>

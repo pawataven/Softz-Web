@@ -1,0 +1,276 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--th);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+::selection {
+  background: var(--orange);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 300;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--fg);
+  color: var(--bg);
+  font-weight: 500;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+/* ---------- layout ---------- */
+.container-page {
+  max-width: calc(var(--container) + 2 * var(--margin));
+  margin: 0 auto;
+  padding: 0 var(--margin);
+  width: 100%;
+}
+
+/* The responsive page grid: 12 / 8 / 4 columns, driven by --grid-columns. */
+.page-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+
+.section {
+  padding-block: var(--space-section);
+  position: relative;
+}
+
+.section.tight {
+  padding-block: var(--space-section-tight);
+}
+
+/*
+  Full-screen sections: each one is at least one viewport tall and centres its content vertically; taller content
+  simply grows the section. The first section shares the first screen with the sticky nav.
+  The Explore section is excluded because it sets its own, taller height for the sticky scroll story.
+*/
+main > section:not(.explore-section) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+main > section:first-child {
+  min-height: calc(100vh - var(--nav-h));
+  min-height: calc(100svh - var(--nav-h));
+}
+
+/*
+  One screen per section on desktop (scripts/smooth-scroll.ts adds html.snap-on): every section after the first
+  fills one screen, so its content must clear the nav bar and leave a little room below. smooth-scroll.ts scales
+  content down to fit when a short screen still cannot hold it.
+*/
+/* !important: this file is in the base layer, and section styles in the components layer would otherwise win. */
+html.snap-on main > section:not(:first-child, .explore-section, .cs-cover) {
+  padding-top: calc(var(--nav-h) + clamp(16px, 3vh, 40px)) !important;
+  padding-bottom: clamp(24px, 4vh, 56px) !important;
+}
+
+/* Case study showcase: only the laptop, as big as the screen allows (sized in case-study.css). */
+html.snap-on main > section.cs-intro {
+  padding-top: calc(var(--nav-h) + 14px) !important;
+  padding-bottom: 14px !important;
+}
+
+.tone {
+  background: var(--tone);
+  box-shadow:
+    inset 0 1px 0 var(--line),
+    inset 0 -1px 0 var(--line);
+}
+
+/* Container-width hairline between two plain sections; .tone bands already carry their own full-bleed edges. */
+main > section:not(.tone) + section:not(.tone) {
+  position: relative;
+}
+
+main > section:not(.tone) + section:not(.tone)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: calc(min(100%, var(--container) + 2 * var(--margin)) - 2 * var(--margin));
+  height: 1px;
+  background: var(--line);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* ---------- type ---------- */
+.label {
+  display: inline-block;
+  font: 600 13px/1.4 var(--en);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.h-display {
+  font: 600 clamp(52px, 7.6vw, 112px) / 1.02 var(--en);
+  letter-spacing: -0.035em;
+}
+
+.h-1 {
+  font: 600 clamp(44px, 5.6vw, 80px) / 1.05 var(--en);
+  letter-spacing: -0.03em;
+}
+
+.h-2 {
+  font: 600 clamp(36px, 4.4vw, 64px) / 1.08 var(--en);
+  letter-spacing: -0.028em;
+}
+
+/* Thai headlines need a roomier line-height so stacked vowels and tone marks are never clipped by .line-mask. */
+.th {
+  font-family: var(--th);
+  letter-spacing: -0.012em;
+  line-height: 1.3;
+}
+
+.h-display.th {
+  font-size: clamp(42px, 6.2vw, 88px);
+}
+
+.h-1.th {
+  font-size: clamp(36px, 4.8vw, 66px);
+}
+
+.h-2.th {
+  font-size: clamp(30px, 3.6vw, 52px);
+}
+
+.sub {
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.6;
+  color: var(--gray);
+}
+
+.dim {
+  color: var(--dim);
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.heading .label .tag {
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+.heading .sub {
+  max-width: 640px;
+  margin-top: 4px;
+}
+
+.heading.center {
+  align-items: center;
+  text-align: center;
+}
+
+.heading.center .sub {
+  margin-inline: auto;
+}
+
+.note {
+  margin-top: 32px;
+  font-size: 13px;
+  color: var(--dim);
+}
+
+.note.center {
+  text-align: center;
+}
+
+/*
+  Thai text (scripts/thai-text.ts): terms that browsers split mid-word stay in one piece, left-aligned paragraphs are
+  justified, and no paragraph ends with one short word alone on its last line.
+*/
+p,
+.sub,
+.lead {
+  text-wrap: pretty;
+}
+
+.nowrap-term {
+  white-space: nowrap;
+}
+
+/* !important: base layer; section styles in the components layer would otherwise win. Only left-aligned text gets it. */
+.label.label-th {
+  font: 500 13px/1.5 var(--th);
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--gray);
+}
+
+.justify-th {
+  text-align: justify !important;
+  text-align-last: start;
+}

@@ -1,0 +1,20 @@
+---
+import type { DeviceComposition as Composition } from '../../lib/devices';
+import DeviceComposition from './DeviceComposition.astro';
+
+interface Props {
+  composition: Composition;
+}
+
+const { composition } = Astro.props;
+---
+
+<div class="stage" data-tilt>
+  <div class="stage-inner">
+    <DeviceComposition composition={composition} priority />
+  </div>
+</div>
+
+<script>
+  import '../../scripts/device-stage';
+</script>

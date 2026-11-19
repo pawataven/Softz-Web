@@ -1,0 +1,26 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { lineMessageUrl } from '../../lib/line';
+import Icon from './Icon.astro';
+
+interface Props extends Omit<HTMLAttributes<'a'>, 'href'> {
+  message: string;
+  variant?: 'primary' | 'glass';
+  size?: 'md' | 'sm';
+  block?: boolean;
+  showIcon?: boolean;
+}
+
+const { message, variant = 'primary', size = 'md', block = false, showIcon = true, class: className, ...attributes } = Astro.props;
+---
+
+<a
+  href={lineMessageUrl(message)}
+  target="_blank"
+  rel="noopener"
+  class:list={['btn', `btn-${variant}`, { 'btn-sm': size === 'sm', 'btn-block': block }, className]}
+  {...attributes}
+>
+  {showIcon && <Icon name="line" size={16} />}
+  <slot />
+</a>

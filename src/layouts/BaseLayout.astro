@@ -1,0 +1,84 @@
+---
+import '../styles/global.css';
+import { Font } from 'astro:assets';
+import type { Thing } from 'schema-dts';
+import FloatingLineButton from '../components/layout/FloatingLineButton.astro';
+import MenuOverlay from '../components/layout/MenuOverlay.astro';
+import SiteFooter from '../components/layout/SiteFooter.astro';
+import SiteHeader from '../components/layout/SiteHeader.astro';
+import JsonLd from '../components/seo/JsonLd.astro';
+import Seo, { type SeoProps } from '../components/seo/Seo.astro';
+import { ROUTES } from '../config/routes';
+import { SITE } from '../config/site';
+import {
+  breadcrumbSchema,
+  buildGraph,
+  organizationSchema,
+  webPageSchema,
+  websiteSchema,
+  type BreadcrumbItem,
+} from '../lib/seo/schema';
+
+interface Props extends SeoProps {
+  breadcrumbs?: BreadcrumbItem[];
+  schema?: Thing[];
+}
+
+const { breadcrumbs = [], schema = [], ...seo } = Astro.props;
+
+const site = Astro.site!;
+const pageUrl = new URL(Astro.url.pathname, site);
+const breadcrumbTrail: BreadcrumbItem[] =
+  breadcrumbs.length > 0 ? [{ name: 'หน้าแรก', path: ROUTES.home }, ...breadcrumbs] : [];
+
+const structuredData = buildGraph([
+  organizationSchema(site),
+  websiteSchema(site),
+  webPageSchema({
+    url: pageUrl,
+    site,
+    title: seo.title ?? SITE.defaultTitle,
+    description: seo.description ?? SITE.defaultDescription,
+  }),
+  ...(breadcrumbTrail.length > 0 ? [breadcrumbSchema(breadcrumbTrail, site)] : []),
+  ...schema,
+]);
+---
+
+<!doctype html>
+<html lang={SITE.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+    <meta name="theme-color" content={SITE.themeColor} />
+    <meta name="color-scheme" content="dark" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <Font cssVariable="--font-noto-sans-thai" preload={[{ subset: 'thai', weight: 400, style: 'normal' }]} />
+    <Font cssVariable="--font-inter" />
+
+    <Seo {...seo} />
+    <JsonLd schema={structuredData} />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">ข้ามไปเนื้อหา</a>
+    <SiteHeader />
+    <MenuOverlay />
+    <main id="main" class="page-in">
+      <slot />
+    </main>
+    <SiteFooter />
+    <FloatingLineButton />
+
+    <script>
+      import '../scripts/reveal';
+      import '../scripts/spotlight';
+      import '../scripts/smooth-scroll';
+      import '../scripts/thai-text';
+    </script>
+  </body>
+</html>

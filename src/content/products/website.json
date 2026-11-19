@@ -1,0 +1,167 @@
+{
+  "order": 1,
+  "category": "service",
+  "status": "available",
+  "label": "WEBSITE",
+  "englishName": "Website",
+  "navLabel": "เว็บไซต์",
+  "navDescription": "Landing Page ถึงเว็บแบรนด์ 10 หน้า",
+  "seo": {
+    "title": "เว็บไซต์",
+    "description": "เว็บไซต์ธุรกิจที่ออกแบบตามแบรนด์ ซื้อขาด หรือจ่ายรายเดือน ไม่ต้องใช้เงินก้อน"
+  },
+  "summary": {
+    "title": "เว็บไซต์ธุรกิจ",
+    "description": "Landing Page ถึงเว็บแบรนด์ 10 หน้า ซื้อขาด หรือจ่ายรายเดือน"
+  },
+  "startingPrice": {
+    "prefix": "เริ่ม",
+    "amount": 3900,
+    "unit": "บาท"
+  },
+  "hero": {
+    "heading": [
+      "เว็บไซต์ที่",
+      "ช่วยปิดการขาย"
+    ],
+    "subtitle": [
+      "เว็บไซต์ธุรกิจที่ออกแบบตามแบรนด์ ซื้อขาด",
+      "หรือจ่ายรายเดือน ไม่ต้องใช้เงินก้อน"
+    ],
+    "priceFrom": "เริ่ม 3,900 บาท · หรือ 790/เดือน",
+    "primaryCta": {
+      "label": "ขอใบเสนอราคา",
+      "lineMessage": "สนใจเว็บไซต์ ขอใบเสนอราคาครับ"
+    },
+    "secondaryCtaLabel": "ดูแพ็กเกจ",
+    "stage": {
+      "layout": "combo",
+      "devices": [
+        {
+          "kind": "laptop",
+          "image": "../../assets/images/screens/website-noir-desktop.webp",
+          "alt": "เว็บตัวอย่าง Noir Cars เต็นท์รถมือสองหรู"
+        },
+        {
+          "kind": "phone",
+          "image": "../../assets/images/screens/website-noir-mobile.webp",
+          "alt": "เว็บ Noir Cars บนมือถือ"
+        }
+      ]
+    }
+  },
+  "features": {
+    "intro": "ทุกแพ็กเกจรองรับมือถือและพร้อมติด Google",
+    "items": [
+      {
+        "title": "ออกแบบเฉพาะแบรนด์",
+        "description": "ไม่ใช้เทมเพลตสำเร็จรูป ดีไซน์ตาม CI ของคุณ"
+      },
+      {
+        "title": "รองรับทุกหน้าจอ",
+        "description": "มือถือ แท็บเล็ต และคอมพิวเตอร์"
+      },
+      {
+        "title": "SEO พื้นฐาน + Analytics",
+        "description": "ติดตั้ง Google Analytics ดูยอดเข้าชมได้เอง"
+      },
+      {
+        "title": "ปุ่มติดต่อครบ",
+        "description": "LINE โทร และแผนที่ กดแล้วคุยได้ทันที"
+      },
+      {
+        "title": "โดเมนและโฮสติ้ง",
+        "description": "ฟรีปีแรกในแพ็กเกจ Business และ Premium"
+      },
+      {
+        "title": "ดูแลหลังส่งงาน",
+        "description": "แพ็กเกจ CARE เริ่ม 390 บาท/เดือน"
+      }
+    ]
+  },
+  "plans": [
+    {
+      "tag": "LANDING PAGE",
+      "name": "เว็บหน้าเดียว ปิดการขายไว",
+      "price": 5900,
+      "unit": "บาท",
+      "compareAtPrice": 8500,
+      "featured": false,
+      "chips": [
+        "7 วัน",
+        "แก้ 2 รอบ"
+      ],
+      "items": [
+        "ออกแบบใหม่ตามแบรนด์ 1 หน้า",
+        "ปุ่ม LINE / โทร / แผนที่ + SEO",
+        "โฮสติ้งฟรีปีแรก"
+      ],
+      "cta": {
+        "label": "เลือกแพ็กเกจนี้",
+        "lineMessage": "สนใจ Landing Page 5,900 บาท ขอใบเสนอราคาครับ"
+      }
+    },
+    {
+      "tag": "BUSINESS WEBSITE",
+      "name": "เว็บธุรกิจ 3–5 หน้า",
+      "price": 12900,
+      "unit": "บาท",
+      "compareAtPrice": 17990,
+      "badge": "ขายดี",
+      "featured": true,
+      "chips": [
+        "14–21 วัน",
+        "แก้ 3 รอบ"
+      ],
+      "items": [
+        "ออกแบบ UX/UI 3–5 หน้า + ฟอร์มติดต่อ",
+        "SEO พื้นฐาน + Google Analytics",
+        "โดเมน .com + โฮสติ้ง ฟรีปีแรก"
+      ],
+      "cta": {
+        "label": "เลือกแพ็กเกจนี้",
+        "lineMessage": "สนใจ Business Website 12,900 บาท ขอใบเสนอราคาครับ"
+      }
+    },
+    {
+      "tag": "PREMIUM WEBSITE",
+      "name": "เว็บแบรนด์ 6–10 หน้า",
+      "price": 24900,
+      "unit": "บาท",
+      "compareAtPrice": 30000,
+      "featured": false,
+      "chips": [
+        "30 วัน",
+        "แก้ 3 รอบ"
+      ],
+      "items": [
+        "ดีไซน์เฉพาะแบรนด์ + แอนิเมชัน",
+        "โครงสร้าง SEO ต่อหน้าบริการ",
+        "โดเมน .com + โฮสติ้ง ฟรีปีแรก"
+      ],
+      "cta": {
+        "label": "เลือกแพ็กเกจนี้",
+        "lineMessage": "สนใจ Premium Website 24,900 บาท ขอใบเสนอราคาครับ"
+      }
+    }
+  ],
+  "plansNote": "แบบรายเดือนเริ่ม 790/เดือน (สัญญา 12 เดือน) · Figma to Web เริ่ม 3,900 · จ่าย 50/50 · ราคายังไม่รวมภาษีมูลค่าเพิ่ม",
+  "faq": [
+    {
+      "question": "ราคารวม VAT แล้วหรือยัง?",
+      "answer": "ยังไม่รวม ผู้ว่าจ้างนิติบุคคลหัก ณ ที่จ่ายตามกฎหมาย"
+    },
+    {
+      "question": "จ่ายเงินอย่างไร?",
+      "answer": "แบ่งจ่าย 50/50 ส่วนแพ็กเกจ Premium แบ่ง 50/30/20"
+    },
+    {
+      "question": "จ่ายรายเดือนได้ไหม?",
+      "answer": "ได้ เริ่ม 790/เดือน ครบ 12 เดือนซื้อขาดได้ในราคา 50%"
+    },
+    {
+      "question": "รวมเนื้อหาและภาพถ่ายไหม?",
+      "answer": "ไม่รวม เตรียมเองหรือให้ทีมเสนอราคาเพิ่ม"
+    }
+  ]
+}

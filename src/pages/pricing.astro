@@ -1,0 +1,154 @@
+---
+import ContactCta from '../components/sections/ContactCta.astro';
+import Icon from '../components/ui/Icon.astro';
+import LineButton from '../components/ui/LineButton.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import { ROUTES } from '../config/routes';
+import { MONTHLY_CARDS, MONTHLY_NOTE, ONE_TIME_CARDS, ONE_TIME_NOTE, PRICE_VALID_UNTIL, TERMS_GROUPS } from '../data/pricing';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { formatPrice } from '../lib/format';
+import { getProductGroups, isInDevelopment } from '../lib/products';
+
+const title = 'ราคา';
+const description = 'ราคาเว็บไซต์ ระบบหลังบ้าน UI/UX Photo Booth Member CRM และ POS ซื้อขาดหรือรายเดือน';
+const productGroups = await getProductGroups();
+---
+
+<BaseLayout {title} {description} breadcrumbs={[{ name: title, path: ROUTES.pricing }]}>
+  <section class="split-hero">
+    <div class="container-page page-grid">
+      <div class="copy">
+        <SectionHeading
+          as="h1"
+          size="1"
+          label="PRICING"
+          heading={['ราคาชัด', 'ตั้งแต่ใบแรก']}
+          sub={[`ราคาจากใบราคา 2026 ยืนราคาถึง ${PRICE_VALID_UNTIL}`, 'ซื้อขาดหรือจ่ายรายเดือน เลือกได้ตามงบ']}
+        />
+        <div class="btn-row reveal">
+          <LineButton message="ช่วยเลือกแพ็กเกจให้หน่อยครับ ธุรกิจของผมคือ ">ช่วยเลือกแพ็กเกจ</LineButton>
+          <a class="btn btn-glass" href="#fine">ดูเงื่อนไข</a>
+        </div>
+      </div>
+      <div class="side">
+        <nav class="index reveal" aria-label="สารบัญราคา">
+          {
+            productGroups.map((group) => (
+              <>
+                <div class="index-group">({group.groupLabel})</div>
+                {group.products.map((product) => (
+                  <a href={ROUTES.product(product.id)}>
+                    <b>
+                      {product.data.navLabel}
+                      {isInDevelopment(product) && <span class="tag tag-orange">{product.data.hero.tag}</span>}
+                    </b>
+                    <span class="f">เริ่ม</span>
+                    <span class="v">{formatPrice(product.data.startingPrice.amount)}</span>
+                    <span class="u">{product.data.startingPrice.unit}</span>
+                    <Icon name="arrow" />
+                  </a>
+                ))}
+              </>
+            ))
+          }
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="once" aria-labelledby="once-heading">
+    <div class="container-page">
+      <SectionHeading label="ONE-TIME" heading="ซื้อขาด เป็นของคุณ" sub="ซื้อขาด ได้ Source Code ส่วนที่พัฒนาให้" id="once-heading" />
+      <div class="cards-3 stagger">
+        {
+          ONE_TIME_CARDS.map((card) => (
+            <article class="once panel">
+              <span class="label">{card.label}</span>
+              <h3>{card.title}</h3>
+              {card.rows.map((row) => (
+                <div class="row">
+                  <b>{row.name}</b>
+                  <span class="pr">
+                    {row.isStartingPrice && <em>เริ่ม</em>}
+                    {row.price}
+                    <small>บาท</small>
+                  </span>
+                  <span>{row.detail}</span>
+                </div>
+              ))}
+              <a class="btn btn-glass" href={card.href}>
+                ดูรายละเอียด
+              </a>
+            </article>
+          ))
+        }
+      </div>
+      <p class="note">{ONE_TIME_NOTE}</p>
+    </div>
+  </section>
+
+  <section class="section tone" id="monthly" aria-labelledby="monthly-heading">
+    <div class="container-page">
+      <SectionHeading label="MONTHLY" heading="จ่ายรายเดือน" sub="ไม่ต้องใช้เงินก้อน เริ่มใช้งานได้เลย" id="monthly-heading" />
+      <div class="cards-4 stagger">
+        {
+          MONTHLY_CARDS.map((card) => (
+            <article class="once panel">
+              <div class="plan-head">
+                <span class="label">{card.label}</span>
+                {card.tag && <span class="tag tag-orange">{card.tag}</span>}
+              </div>
+              <h3>{card.title}</h3>
+              <div class="price">
+                {card.isStartingPrice && <span class="f">เริ่ม</span>}
+                <span class="v">{card.price}</span>
+                <span class="u">/เดือน</span>
+              </div>
+              {card.rows.map((row) => (
+                <div class="row">
+                  <b>{row.name}</b>
+                  <span class="pr is-text">{row.value}</span>
+                </div>
+              ))}
+              {'href' in card.action ? (
+                <a class="btn btn-glass" href={card.action.href}>
+                  {card.action.label}
+                </a>
+              ) : (
+                <LineButton message={card.action.lineMessage} variant="glass">
+                  {card.action.label}
+                </LineButton>
+              )}
+            </article>
+          ))
+        }
+      </div>
+      <p class="note">{MONTHLY_NOTE}</p>
+    </div>
+  </section>
+
+  <section class="section" id="fine" aria-labelledby="fine-heading">
+    <div class="container-page">
+      <SectionHeading label="TERMS" heading="เงื่อนไขและบริการเสริม" sub="บริการเสริม แพ็กเกจคู่ และเงื่อนไขการชำระเงิน" id="fine-heading" />
+      <div class="fine stagger">
+        {
+          TERMS_GROUPS.map((group) => (
+            <div id={group.id}>
+              <h3>{group.title}</h3>
+              <dl>
+                {group.items.map((item) => (
+                  <div>
+                    <dt>{item.term}</dt>
+                    <dd>{item.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <ContactCta sub="ไม่แน่ใจว่าแพ็กเกจไหนเหมาะ ทักมาให้ช่วยเลือกได้เลย" showContactBar={false} />
+</BaseLayout>

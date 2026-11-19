@@ -1,0 +1,32 @@
+.pv {
+  margin: 0 calc(2 * var(--col1));
+}
+
+.pv-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 24px;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+}
+
+.pv-row h2 {
+  font: 600 18px/1.4 var(--th);
+}
+
+.pv-row p {
+  color: var(--gray);
+}
+
+@media (max-width: 1023px) {
+  .pv {
+    margin: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .pv-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}

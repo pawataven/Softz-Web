@@ -1,0 +1,13 @@
+---
+import type { Graph } from 'schema-dts';
+
+interface Props {
+  schema: Graph;
+}
+
+const { schema } = Astro.props;
+// Escaping "<" prevents a "</script>" inside any string value from closing the tag early.
+const serializedSchema = JSON.stringify(schema).replace(/</g, '\\u003c');
+---
+
+<script is:inline type="application/ld+json" set:html={serializedSchema} />

@@ -1,0 +1,35 @@
+.fab-line {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 60;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: none;
+  place-items: center;
+  background: #f5f5f6;
+  color: #08090a;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateY(16px) scale(0.9);
+  transition:
+    opacity 0.35s var(--ease),
+    transform 0.45s var(--ease);
+}
+
+.fab-line.show {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 767px) {
+  .fab-line {
+    display: grid;
+  }
+}
+
+body.menu-open .fab-line {
+  opacity: 0;
+  pointer-events: none;
+}

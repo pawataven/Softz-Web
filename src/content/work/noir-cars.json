@@ -1,0 +1,263 @@
+{
+  "order": 3,
+  "category": "demo",
+  "title": "Noir Cars",
+  "styles": [
+    "Luxury",
+    "Minimal"
+  ],
+  "description": "เว็บตัวอย่างเต็นท์รถมือสองหรู 5 หน้า สต็อกรถ 24 คัน แยก 8 แบรนด์พร้อมโลโก้ ค้นหา กรอง คำนวณค่างวด และแอนิเมชันทั้งเว็บ",
+  "tags": [
+    "เว็บตัวอย่าง",
+    "ออกแบบ UI",
+    "ออกแบบโลโก้"
+  ],
+  "liveUrl": "https://noir-cars-rho.vercel.app",
+  "cta": {
+    "label": "อยากได้เว็บแบบนี้",
+    "lineMessage": "เห็นเว็บตัวอย่าง Noir Cars แล้ว อยากได้เว็บเต็นท์รถแบบนี้ ขอใบเสนอราคาครับ"
+  },
+  "art": {
+    "layout": "combo",
+    "devices": [
+      {
+        "kind": "laptop",
+        "image": "../../assets/images/work/noir-cars/screens/home-desktop.webp",
+        "alt": "หน้าแรกเว็บตัวอย่าง Noir Cars บนคอม"
+      },
+      {
+        "kind": "phone",
+        "image": "../../assets/images/work/noir-cars/screens/car-mobile.webp",
+        "alt": "หน้ารายละเอียดรถ Noir Cars บนมือถือ"
+      }
+    ]
+  },
+  "detail": {
+    "seo": {
+      "title": "Noir Cars — เว็บตัวอย่างเต็นท์รถมือสองหรู",
+      "description": "เว็บตัวอย่างเต็นท์รถมือสองโดย SOFT Z DIGITAL สต็อกรถ 24 คัน 8 แบรนด์ ค้นหา กรอง คำนวณค่างวด โลโก้ออกแบบใหม่ พร้อมราคาประเมินถ้าทำให้เต็นท์คุณ"
+    },
+    "cover": {
+      "image": "../../assets/images/work/noir-cars/photos/gt2.webp",
+      "alt": "Porsche 911 GT2 RS สีขาวในโชว์รูม",
+      "eyebrow": "DEMO WEBSITE · USED CARS",
+      "subtitle": "เว็บตัวอย่างเต็นท์รถมือสองหรู โทนงาช้าง-ดำ พร้อมสต็อกรถ ค่างวด และโลโก้ใหม่",
+      "mobileFocus": "62% 55%"
+    },
+    "statement": [
+      "ซื้อรถหลักล้าน",
+      "ต้องเริ่มจากความเชื่อใจ"
+    ],
+    "showcase": {
+      "kind": "desktop",
+      "image": "../../assets/images/work/noir-cars/screens/home-desktop.webp",
+      "alt": "หน้าแรก Noir Cars",
+      "video": {
+        "mp4": "/videos/work/noir-cars-tour.mp4",
+        "webm": "/videos/work/noir-cars-tour.webm"
+      }
+    },
+    "story": "Noir Cars เป็นเว็บตัวอย่างเต็นท์รถมือสองระดับพรีเมียมที่ SOFT Z ออกแบบใหม่ทั้งหมด ตั้งแต่ชื่อ โลโก้ ไปจนถึงหน้าเว็บ ใช้โทนงาช้างกับดำ ให้ภาพรถเป็นตัวเล่าเรื่อง ข้อความน้อย กดน้อย ลูกค้าหารถที่ใช่ ดูค่างวด และนัดดูรถได้ในไม่กี่คลิก",
+    "facts": [
+      {
+        "value": "5",
+        "label": "หน้าเว็บไซต์"
+      },
+      {
+        "value": "24",
+        "label": "คันในสต็อกตัวอย่าง"
+      },
+      {
+        "value": "8",
+        "label": "แบรนด์ พร้อมโลโก้"
+      },
+      {
+        "value": "5",
+        "label": "ประเภทรถ"
+      }
+    ],
+    "chapters": [
+      {
+        "label": "01 / INVENTORY",
+        "title": "สต็อกรถ กรองได้ในคลิกเดียว",
+        "body": "กรองตามแบรนด์ ประเภท และงบประมาณ เรียงตามปี ราคา หรือเลขไมล์ ทุกการ์ดบอกราคาและค่างวดต่อเดือนทันที แถบกรองติดอยู่ด้านบนตลอดการเลื่อน",
+        "screens": [
+          {
+            "kind": "desktop",
+            "image": "../../assets/images/work/noir-cars/screens/cars-desktop.webp",
+            "alt": "หน้ารถทั้งหมดพร้อมแถบกรอง"
+          },
+          {
+            "kind": "mobile",
+            "image": "../../assets/images/work/noir-cars/screens/cars-mobile.webp",
+            "alt": "หน้ารถทั้งหมดบนมือถือ"
+          }
+        ]
+      },
+      {
+        "label": "02 / BRANDS",
+        "title": "แยกหมวดตามแบรนด์ พร้อมโลโก้",
+        "body": "8 แบรนด์มีโลโก้ของตัวเอง กดแล้วเปิดหน้ารวมรถยี่ห้อนั้น หัวหน้าเปลี่ยนเป็นโลโก้แบรนด์ ลูกค้าที่รู้ว่าอยากได้ยี่ห้อไหนเจอรถเร็วที่สุด",
+        "screens": [
+          {
+            "kind": "desktop",
+            "image": "../../assets/images/work/noir-cars/screens/porsche-desktop.webp",
+            "alt": "หน้ารวมรถ Porsche"
+          },
+          {
+            "kind": "mobile",
+            "image": "../../assets/images/work/noir-cars/screens/porsche-mobile.webp",
+            "alt": "หน้ารวมรถ Porsche บนมือถือ"
+          }
+        ]
+      },
+      {
+        "label": "03 / DETAIL",
+        "title": "หน้ารถที่ตอบทุกคำถาม",
+        "body": "แกลเลอรีกดขยายได้ สเปก 6 ช่องแบบไอคอน ราคาพร้อมค่างวด ปุ่มนัดดูรถ LINE และโทร อยู่ในจอแรก พร้อมรถที่คล้ายกันให้ดูต่อ",
+        "screens": [
+          {
+            "kind": "desktop",
+            "image": "../../assets/images/work/noir-cars/screens/car-desktop.webp",
+            "alt": "หน้ารายละเอียดรถ Porsche 911"
+          },
+          {
+            "kind": "mobile",
+            "image": "../../assets/images/work/noir-cars/screens/car-mobile.webp",
+            "alt": "หน้ารายละเอียดรถบนมือถือ"
+          }
+        ]
+      },
+      {
+        "label": "04 / FINANCE",
+        "title": "คำนวณค่างวดได้เอง",
+        "body": "เลื่อนราคารถ เงินดาวน์ และเลือกจำนวนงวด เห็นค่างวดต่อเดือนทันที แล้วกดขอเช็กเครดิตต่อได้เลย ลดคำถามซ้ำๆ ในแชต",
+        "screens": [
+          {
+            "kind": "desktop",
+            "image": "../../assets/images/work/noir-cars/screens/finance-desktop.webp",
+            "alt": "ตัวคำนวณค่างวด"
+          },
+          {
+            "kind": "mobile",
+            "image": "../../assets/images/work/noir-cars/screens/contact-mobile.webp",
+            "alt": "ฟอร์มนัดดูรถและเช็กเครดิตบนมือถือ"
+          }
+        ]
+      }
+    ],
+    "mobileStrip": {
+      "label": "MOBILE FIRST",
+      "title": "หรูเท่ากันบนมือถือ",
+      "body": "ทุกหน้าออกแบบจอมือถือแยก ภาพรถเต็มจอ ปุ่มใหญ่กดง่าย เปิดจากลิงก์ในแชตแล้วดูรถต่อได้ทันที",
+      "screens": [
+        {
+          "kind": "mobile",
+          "image": "../../assets/images/work/noir-cars/screens/m-brands.webp",
+          "alt": "แบรนด์บนมือถือ"
+        },
+        {
+          "kind": "mobile",
+          "image": "../../assets/images/work/noir-cars/screens/m-types.webp",
+          "alt": "ประเภทรถบนมือถือ"
+        },
+        {
+          "kind": "mobile",
+          "image": "../../assets/images/work/noir-cars/screens/m-arrivals.webp",
+          "alt": "รถมาใหม่บนมือถือ"
+        },
+        {
+          "kind": "mobile",
+          "image": "../../assets/images/work/noir-cars/screens/m-certified.webp",
+          "alt": "ส่วน Noir Certified บนมือถือ"
+        }
+      ]
+    },
+    "photos": {
+      "label": "GALLERY",
+      "title": "ภาพรถโทนเดียวกันทั้งเว็บ",
+      "body": "ภาพรถทุกคันปรับสีให้เป็นชุดเดียวกัน ลดความสดลงเล็กน้อยและเติมโทนงาช้าง เว็บจึงดูเรียบหรูไม่ว่าจะลงรถสีอะไร",
+      "items": [
+        {
+          "image": "../../assets/images/work/noir-cars/photos/lc500.webp",
+          "alt": "Lexus LC 500"
+        },
+        {
+          "image": "../../assets/images/work/noir-cars/photos/cabin.webp",
+          "alt": "ห้องโดยสารหนังสีดำ"
+        },
+        {
+          "image": "../../assets/images/work/noir-cars/photos/amggt.webp",
+          "alt": "Mercedes-AMG GT สีดำด้าน"
+        },
+        {
+          "image": "../../assets/images/work/noir-cars/photos/wheel.webp",
+          "alt": "พวงมาลัย AMG"
+        },
+        {
+          "image": "../../assets/images/work/noir-cars/photos/gclass.webp",
+          "alt": "Mercedes-Benz G-Class สีดำ"
+        },
+        {
+          "image": "../../assets/images/work/noir-cars/photos/mazda3.webp",
+          "alt": "Mazda3 สีขาวไฟหน้าเปิด"
+        }
+      ]
+    },
+    "pricing": {
+      "total": 24900,
+      "totalLabel": "ราคาประเมิน",
+      "title": "ประเมินที่ 24,900 บาท",
+      "intro": "ถ้าทำเว็บแบบนี้ให้เต็นท์รถของคุณ ราคาจะอยู่ที่แพ็กเกจ Premium Website รวมออกแบบโลโก้ ตารางนี้แยกให้เห็นว่าแต่ละส่วนคืออะไร",
+      "items": [
+        {
+          "name": "วางโครงเว็บและ UX",
+          "detail": "ลำดับการใช้งานจากค้นหารถ ดูรายละเอียด คำนวณค่างวด ไปจนถึงนัดดูรถ",
+          "amount": 2500
+        },
+        {
+          "name": "ออกแบบโลโก้",
+          "detail": "โลโก้ตัวอักษร Noir Cars ไฟล์ SVG และ PNG ทั้งแบบดำและงาช้าง พร้อมไอคอน",
+          "amount": 2000
+        },
+        {
+          "name": "ออกแบบ UI ทั้งเว็บ",
+          "detail": "ออกแบบ 5 หน้า ทั้งจอคอมและมือถือ โทนงาช้าง-ดำ คุมภาพรถทุกคันให้เป็นชุดเดียวกัน",
+          "amount": 6500
+        },
+        {
+          "name": "พัฒนาเว็บและระบบสต็อกรถ",
+          "detail": "ทุกหน้าสร้างจากข้อมูลรถชุดเดียว กรองแบรนด์ ประเภท งบ และเรียงลำดับ หน้ารายละเอียดรถสร้างให้อัตโนมัติ",
+          "amount": 7400
+        },
+        {
+          "name": "ค่างวด แกลเลอรี และฟอร์ม",
+          "detail": "ตัวคำนวณค่างวด แกลเลอรีกดขยาย และฟอร์มนัดดูรถ เช็กเครดิต ขายรถ",
+          "amount": 2500
+        },
+        {
+          "name": "แอนิเมชันและ Interaction",
+          "detail": "หัวข้อเผยทีละบรรทัด แสงตามเมาส์ ภาพขยายเต็มจอ แกลเลอรีแบ่งจอ และตัวเลขนับขึ้น",
+          "amount": 3000
+        },
+        {
+          "name": "SEO พื้นฐานและขึ้นเว็บ",
+          "detail": "ตั้งชื่อหน้าและคำอธิบายทุกหน้า ขึ้นระบบ และทดสอบก่อนส่งมอบ",
+          "amount": 1000
+        }
+      ],
+      "notes": [
+        "ราคาตามแพ็กเกจ Premium Website รวมโดเมน .com และโฮสติ้งปีแรก ยังไม่รวมภาษีมูลค่าเพิ่ม",
+        "อยากลงรถเองผ่านระบบหลังบ้าน เพิ่มระบบ CMS เริ่ม 12,900 บาท",
+        "เว็บตัวอย่างนี้ยังไม่ได้เปิดใช้งานจริง ภาพรถเป็นภาพฟรีจาก Unsplash โลโก้แบรนด์รถเป็นเครื่องหมายการค้าของเจ้าของ"
+      ]
+    },
+    "stack": [
+      "Figma",
+      "Nuxt",
+      "TypeScript",
+      "Tailwind CSS",
+      "Vercel"
+    ]
+  }
+}

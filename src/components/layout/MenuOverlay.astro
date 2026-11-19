@@ -1,0 +1,72 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../../assets/images/brand/softz-logo.png';
+import { PRIMARY_NAV } from '../../config/navigation';
+import { ROUTES } from '../../config/routes';
+import { SITE } from '../../config/site';
+import { getProductGroups, isInDevelopment } from '../../lib/products';
+import ContactValue from '../ui/ContactValue.astro';
+import LineButton from '../ui/LineButton.astro';
+
+const productGroups = await getProductGroups();
+const buddhistYear = new Date().getFullYear() + 543;
+---
+
+<div class="overlay" id="menu" role="dialog" aria-modal="true" aria-label="เมนู" aria-hidden="true" inert>
+  <div class="container-page overlay-top">
+    <a href={ROUTES.home} aria-label={`${SITE.name} หน้าแรก`}>
+      <Image src={logo} alt={SITE.name} height={22} width={Math.round((logo.width / logo.height) * 22)} layout="fixed" />
+    </a>
+    <button type="button" class="menu-btn close-btn" data-menu-close><span class="dot"></span>ปิด</button>
+  </div>
+
+  <div class="container-page overlay-body">
+    <div class="overlay-groups">
+      {
+        productGroups.map((group) => (
+          <div>
+            <h2>({group.groupLabel})</h2>
+            <ul>
+              {group.products.map((product) => (
+                <li>
+                  <a class="big" href={ROUTES.product(product.id)}>
+                    {product.data.navLabel}
+                    {isInDevelopment(product) && <span class="tag tag-orange">{product.data.hero.tag}</span>}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+      <div>
+        <h2>(SOFT Z)</h2>
+        <ul>
+          {
+            PRIMARY_NAV.map((link) => (
+              <li>
+                <a class="big" href={link.href}>
+                  {link.menuLabel ?? link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="overlay-contact">
+        <h2>(ติดต่อ)</h2>
+        <dl>
+          <dt>LINE</dt><dd><ContactValue channel="line" /></dd>
+          <dt>โทร</dt><dd><ContactValue channel="phone" /></dd>
+          <dt>อีเมล</dt><dd><ContactValue channel="email" /></dd>
+          <dt>เพจ</dt><dd><ContactValue channel="facebook" /></dd>
+        </dl>
+        <LineButton message="สวัสดีครับ">ทักแชท LINE</LineButton>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-page">
+    <div class="overlay-foot"><span>{SITE.tagline}</span><span>© {buddhistYear} {SITE.name}</span></div>
+  </div>
+</div>

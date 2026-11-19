@@ -1,0 +1,26 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import type { DeviceComposition } from '../../lib/devices';
+import DeviceFrame from './DeviceFrame.astro';
+
+interface Props extends HTMLAttributes<'div'> {
+  composition: DeviceComposition;
+  priority?: boolean;
+  decorative?: boolean;
+}
+
+const { composition, priority = false, decorative = false, class: className, ...attributes } = Astro.props;
+const layoutClass = composition.layout === 'solo' ? 'combo solo' : composition.layout;
+---
+
+{
+  composition.layout === 'single' ? (
+    <DeviceFrame device={composition.devices[0]} priority={priority} decorative={decorative} />
+  ) : (
+    <div class:list={[layoutClass, className]} {...attributes}>
+      {composition.devices.map((device, index) => (
+        <DeviceFrame device={device} priority={priority && index === 0} decorative={decorative} />
+      ))}
+    </div>
+  )
+}

@@ -1,0 +1,25 @@
+---
+import { START_STEPS } from '../../../data/home';
+import SectionHeading from '../../ui/SectionHeading.astro';
+---
+
+<section class="section tone" aria-labelledby="steps-heading">
+  <div class="container-page">
+    <SectionHeading label="HOW TO START" heading="เริ่มงานใน 4 ขั้นตอน" sub="จากแชทแรกถึงวันส่งมอบ ทุกขั้นตอนชัดเจน" id="steps-heading" />
+    <ol class="steps" data-steps>
+      {
+        START_STEPS.map((step, index) => (
+          <li>
+            <span class="n">{String(index + 1).padStart(2, '0')}</span>
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+
+  <script>
+    import '../../../scripts/steps';
+  </script>
+</section>

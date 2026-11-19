@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+/* The design system lives in the base/components layers so Tailwind utilities can still override it per element. */
+@import "./tokens.css" layer(base);
+@import "./base.css" layer(base);
+@import "./motion.css" layer(components);
+
+@import "./components/buttons.css" layer(components);
+@import "./components/panel.css" layer(components);
+@import "./components/edge-glow.css" layer(components);
+@import "./components/devices.css" layer(components);
+@import "./components/toast.css" layer(components);
+
+@import "./layout/nav.css" layer(components);
+@import "./layout/menu-overlay.css" layer(components);
+@import "./layout/footer.css" layer(components);
+@import "./layout/fab.css" layer(components);
+
+@import "./sections/hero.css" layer(components);
+@import "./sections/explore.css" layer(components);
+@import "./sections/together.css" layer(components);
+@import "./sections/finder.css" layer(components);
+@import "./sections/bento.css" layer(components);
+@import "./sections/steps.css" layer(components);
+@import "./sections/cta.css" layer(components);
+@import "./sections/plans.css" layer(components);
+@import "./sections/faq.css" layer(components);
+@import "./sections/pricing.css" layer(components);
+@import "./sections/about.css" layer(components);
+@import "./sections/work.css" layer(components);
+@import "./sections/case-study.css" layer(components);
+@import "./sections/contact.css" layer(components);
+@import "./sections/privacy.css" layer(components);
+
+/* Tailwind reads the design tokens from tokens.css, so there is one source of truth. Default colors are removed to keep utilities on-brand. */
+@theme inline {
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface2: var(--surface2);
+  --color-field: var(--field);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-highlight: var(--highlight);
+  --color-fg: var(--fg);
+  --color-gray: var(--gray);
+  --color-dim: var(--dim);
+  --color-orange: var(--orange);
+  --color-orange-tint: var(--orange-tint);
+  --color-orange-line: var(--orange-line);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-err: var(--err);
+
+  --font-sans: var(--th);
+  --font-display: var(--en);
+
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+
+  --ease-soft: var(--ease);
+}

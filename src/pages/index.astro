@@ -1,0 +1,57 @@
+---
+import ContactCta from '../components/sections/ContactCta.astro';
+import FeatureBento from '../components/sections/FeatureBento.astro';
+import ExploreSection from '../components/sections/home/ExploreSection.astro';
+import PackageFinder from '../components/sections/home/PackageFinder.astro';
+import StartSteps from '../components/sections/home/StartSteps.astro';
+import TogetherSection from '../components/sections/home/TogetherSection.astro';
+import DeviceStage from '../components/ui/DeviceStage.astro';
+import LineButton from '../components/ui/LineButton.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import { ROUTES } from '../config/routes';
+import { SITE } from '../config/site';
+import { HERO_COMPOSITION, WHY_ITEMS } from '../data/home';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout description={SITE.defaultDescription}>
+  <section class="hero" aria-labelledby="hero-heading">
+    {/* Wide screens: devices on the left, text on the right (mirror of the product page hero). Phones: stacked. */}
+    <div class="container-page hero-grid">
+      <div class="hero-text">
+        <SectionHeading
+          as="h1"
+          size="display"
+          label="CREATIVE DESIGN MEETS TECHNOLOGY"
+          heading={['เว็บไซต์และระบบ', 'ที่ธุรกิจใช้ได้จริง']}
+          sub={['เว็บไซต์ ระบบหลังบ้าน POS CRM และ Photo Booth', 'ราคาชัดตั้งแต่ใบเสนอราคาแรก']}
+          id="hero-heading"
+        />
+        <div class="btn-row reveal">
+          <LineButton message="สวัสดีครับ อยากขอใบเสนอราคา">ขอใบเสนอราคา</LineButton>
+          <a class="btn btn-glass" href={ROUTES.pricing}>ดูราคาทั้งหมด</a>
+        </div>
+      </div>
+      <DeviceStage composition={HERO_COMPOSITION} />
+    </div>
+  </section>
+
+  <ExploreSection />
+  <TogetherSection />
+  <PackageFinder />
+
+  <section class="section" aria-labelledby="why-heading">
+    <div class="container-page">
+      <SectionHeading
+        label="WHY SOFT Z"
+        heading={['ส่งงานแล้ว', 'ของยังเป็นของคุณ']}
+        sub="ระบบและโค้ดส่วนที่พัฒนาให้ ส่งมอบให้คุณ ไม่ถูกผูกไว้กับเรา"
+        id="why-heading"
+      />
+      <FeatureBento items={WHY_ITEMS} columns={6} />
+    </div>
+  </section>
+
+  <StartSteps />
+  <ContactCta />
+</BaseLayout>

@@ -1,0 +1,29 @@
+---
+import type { Product } from '../../../lib/products';
+import DeviceStage from '../../ui/DeviceStage.astro';
+import LineButton from '../../ui/LineButton.astro';
+import SectionHeading from '../../ui/SectionHeading.astro';
+
+interface Props {
+  product: Product;
+}
+
+const { label, hero } = Astro.props.product.data;
+---
+
+<section class="p-hero">
+  {/* Wide screens: text on the left, a large device stage on the right. Narrow screens: stacked and centred. */}
+  <div class="container-page p-hero-grid">
+    <div class="p-hero-text">
+      <SectionHeading as="h1" size="1" label={label} heading={hero.heading} sub={hero.subtitle}>
+        {hero.tag && <span slot="label-extra" class="tag tag-orange">{hero.tag}</span>}
+      </SectionHeading>
+      <p class="from reveal">{hero.priceFrom}</p>
+      <div class="btn-row reveal">
+        <LineButton message={hero.primaryCta.lineMessage}>{hero.primaryCta.label}</LineButton>
+        <a class="btn btn-glass" href="#plans">{hero.secondaryCtaLabel}</a>
+      </div>
+    </div>
+    <DeviceStage composition={hero.stage} />
+  </div>
+</section>

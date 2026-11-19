@@ -1,0 +1,83 @@
+.cta {
+  text-align: center;
+}
+
+.cta .btn-row {
+  justify-content: center;
+  margin-top: var(--space-actions);
+}
+
+.contact-bar {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: var(--space-stack) var(--col1) 0;
+  border-radius: var(--r-md);
+}
+
+.contact-bar > div {
+  padding: 22px 28px;
+  text-align: left;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.contact-bar > div + div::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 22px;
+  bottom: 22px;
+  width: 1px;
+  background: var(--line);
+}
+
+.contact-bar > div:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.contact-bar small {
+  display: block;
+  color: var(--dim);
+  font-size: 13px;
+}
+
+.contact-bar a,
+.contact-bar span {
+  font-size: 15px;
+}
+
+.contact-bar a:hover {
+  color: #fff;
+}
+
+@media (max-width: 1023px) {
+  .contact-bar {
+    margin: var(--space-stack) 0 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .cta .btn-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contact-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-bar > div {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    padding: 16px 20px;
+  }
+
+  .contact-bar > div + div::before {
+    left: 20px;
+    right: 20px;
+    top: 0;
+    bottom: auto;
+    width: auto;
+    height: 1px;
+  }
+}

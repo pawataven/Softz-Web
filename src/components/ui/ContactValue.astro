@@ -1,0 +1,30 @@
+---
+import { CONTACT, SITE } from '../../config/site';
+import { lineMessageUrl } from '../../lib/line';
+
+interface Props {
+  channel: 'line' | 'phone' | 'email' | 'facebook';
+}
+
+const { channel } = Astro.props;
+---
+
+{
+  channel === 'line' && (
+    <a href={lineMessageUrl('สวัสดีครับ')} target="_blank" rel="noopener">
+      {CONTACT.lineId}
+    </a>
+  )
+}
+{channel === 'phone' && <a href={`tel:${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</a>}
+{channel === 'email' && <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>}
+{
+  channel === 'facebook' &&
+    (CONTACT.facebookUrl ? (
+      <a href={CONTACT.facebookUrl} target="_blank" rel="noopener">
+        {SITE.name}
+      </a>
+    ) : (
+      <span>{SITE.name}</span>
+    ))
+}

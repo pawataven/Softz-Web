@@ -1,0 +1,178 @@
+.together {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--gutter);
+  align-items: center;
+  margin-top: var(--space-stack);
+  padding: 56px;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--hair);
+}
+
+.tone .together {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+.together-list {
+  grid-column: 1 / span 4;
+}
+
+.together-item {
+  border-bottom: 1px solid var(--line);
+}
+
+.together-item:last-child {
+  border-bottom: 0;
+}
+
+.together-item button {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 22px 0;
+  font: 600 19px/1.35 var(--th);
+  color: var(--gray);
+  transition: color 0.2s;
+}
+
+.together-item button:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.together-item button:hover,
+.together-item.open button {
+  color: var(--fg);
+}
+
+.together-item button svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.4s var(--ease);
+  flex: none;
+}
+
+.together-item.open button svg {
+  transform: rotate(180deg);
+}
+
+.together-item .body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s var(--ease);
+}
+
+.together-item.open .body {
+  grid-template-rows: 1fr;
+}
+
+.together-item .body > div {
+  overflow: hidden;
+}
+
+.together-item .body p {
+  color: var(--gray);
+  font-size: 15px;
+  padding-bottom: 16px;
+}
+
+.together-item .body .link-arrow {
+  font-size: 15px;
+  margin-bottom: 22px;
+}
+
+.together-stage {
+  grid-column: 6 / span 7;
+  position: relative;
+  aspect-ratio: 16 / 11;
+}
+
+/* The bottom inset matches the tablet/phone overhang (bottom: -4%) so the devices stay inside the stage box. */
+.together-stage .combo {
+  position: absolute;
+  inset: 0 0 4%;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(16px) scale(0.98);
+  transition:
+    opacity 0.6s var(--ease),
+    transform 0.8s var(--ease);
+  pointer-events: none;
+}
+
+.together-stage .combo.active {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 1023px) {
+  .together {
+    padding: 32px;
+  }
+
+  .together-list,
+  .together-stage {
+    grid-column: 1 / -1;
+  }
+
+  .together-stage {
+    order: -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .together {
+    padding: 24px 20px;
+  }
+}
+
+/*
+  Wide screens: a bigger stage that hugs the devices. The old 16:11 box was taller than the laptop + tablet,
+  so the group sat low and to the right of its column. The box is now the group's own shape, a column wider,
+  and the group is centred inside it (laptop 86% + tablet overhang on the right, shifted back by half).
+*/
+@media (min-width: 1024px) {
+  .together {
+    margin-top: 0;
+  }
+
+  .together-left {
+    grid-column: 1 / span 4;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(24px, 4vh, 48px);
+  }
+
+  .together-stage {
+    grid-column: 5 / span 8;
+    aspect-ratio: 16 / 9.6;
+    margin-bottom: 4%;
+  }
+
+  .together-stage .combo {
+    inset: 0;
+    width: 96%;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 1023px) {
+  .together-left {
+    display: contents;
+  }
+
+  /* Order on phones: heading, devices, then the list. */
+  .together-left > .heading {
+    grid-column: 1 / -1;
+    order: -2;
+  }
+}

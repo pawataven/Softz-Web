@@ -1,0 +1,238 @@
+/* Brand-neutral device mockups drawn in CSS (no device photos): .laptop > .lid > .screen, .phone > .bezel, .tablet */
+.laptop {
+  position: relative;
+  width: 100%;
+  padding: 0 6.5%;
+}
+
+.laptop .lid {
+  position: relative;
+  background: #050506;
+  border-radius: 2.4% / 3.8%;
+  padding: 1.7% 1.7% 3%;
+  box-shadow:
+    0 0 0 1px #2e3034,
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.laptop .lid::before {
+  content: "";
+  position: absolute;
+  top: 0.9%;
+  left: 50%;
+  width: 0.6%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #1e2023;
+  transform: translateX(-50%);
+}
+
+.laptop .screen {
+  overflow: hidden;
+  border-radius: 0.6% / 1%;
+  background: #0e0f11;
+}
+
+.laptop .screen img,
+.laptop .screen video {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: fill;
+  object-position: top;
+}
+
+.laptop .screen video {
+  aspect-ratio: 16 / 10;
+  height: auto;
+  object-fit: cover;
+}
+
+.laptop .base {
+  position: relative;
+  height: 0;
+  padding-bottom: 2.6%;
+  margin: 0 -6.5%;
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  background: linear-gradient(180deg, #9a9da3 0%, #5e6167 30%, #2e3034 70%, #1a1b1e 100%);
+  box-shadow: 0 40px 60px -26px rgba(0, 0, 0, 0.9);
+}
+
+.laptop .base::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 15%;
+  height: 45%;
+  transform: translateX(-50%);
+  border-radius: 0 0 10px 10px;
+  background: linear-gradient(180deg, #2c2e32, #4a4d52);
+}
+
+.laptop .base::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.phone {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  border-radius: 14.5% / 6.8%;
+  background: #000;
+  box-shadow:
+    0 0 0 1px #232427,
+    0 40px 70px -30px rgba(0, 0, 0, 0.9);
+}
+
+.phone .bezel {
+  padding: 3%;
+  border-radius: inherit;
+  background: #000;
+}
+
+.phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: fill;
+  object-position: top;
+  border-radius: 11.8% / 5.4%;
+}
+
+.tablet {
+  position: relative;
+  padding: 1.6%;
+  border-radius: 4.2% / 7.4%;
+  background: #030304;
+  box-shadow:
+    0 0 0 1px #232427,
+    0 40px 70px -30px rgba(0, 0, 0, 0.9);
+}
+
+.tablet img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: fill;
+  object-position: top;
+  border-radius: 2.6% / 4.2%;
+}
+
+/* ---------- compositions ---------- */
+.combo {
+  position: relative;
+  width: 100%;
+}
+
+.combo .laptop {
+  width: 86%;
+}
+
+.combo .phone {
+  position: absolute;
+  right: 2%;
+  bottom: -2%;
+  width: 17%;
+}
+
+.combo .tablet {
+  position: absolute;
+  right: 0;
+  bottom: -4%;
+  width: 40%;
+}
+
+.combo.solo {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.combo.solo .laptop {
+  width: 100%;
+}
+
+.trio {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 4%;
+  width: 100%;
+}
+
+.trio .phone {
+  width: 24%;
+  flex: none;
+}
+
+.trio .phone:nth-child(2) {
+  width: 27%;
+  transform: translateY(-6%);
+}
+
+/* POS is drawn because the product has no real screenshot yet. */
+.pos-screen {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) 1.4fr;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  padding: 16px;
+  aspect-ratio: 16 / 9;
+  background: #0e0f11;
+}
+
+.pos-screen i {
+  background: var(--surface2);
+  border-radius: 10px;
+}
+
+.pos-screen i:nth-child(3n) {
+  background: #1d1e21;
+}
+
+.pos-cart {
+  grid-column: 5;
+  grid-row: 1 / span 3;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--line);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pos-cart span {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--line-strong);
+}
+
+.pos-cart span:nth-child(2) {
+  width: 70%;
+}
+
+.pos-cart span:nth-child(3) {
+  width: 85%;
+}
+
+.pos-cart span:nth-child(4) {
+  width: 60%;
+}
+
+.pos-cart b {
+  margin-top: auto;
+  font: 600 18px var(--en);
+}
+
+.pos-cart em {
+  height: 28px;
+  border-radius: 8px;
+  background: var(--orange);
+}

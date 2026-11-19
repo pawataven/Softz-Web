@@ -1,0 +1,42 @@
+---
+import { ROUTES } from '../../config/routes';
+import ContactValue from '../ui/ContactValue.astro';
+import LineButton from '../ui/LineButton.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+
+interface Props {
+  sub?: string;
+  showContactBar?: boolean;
+}
+
+const { sub = 'บอกธุรกิจและงบ รับใบเสนอราคาฟรี', showContactBar = true } = Astro.props;
+
+const contactChannels = [
+  { label: 'LINE', channel: 'line' },
+  { label: 'โทร', channel: 'phone' },
+  { label: 'อีเมล', channel: 'email' },
+  { label: 'เพจ', channel: 'facebook' },
+] as const;
+---
+
+<section class="section cta" aria-labelledby="cta-heading">
+  <div class="container-page">
+    <SectionHeading label="GET A QUOTE" heading="คุยกันก่อน ฟรี" sub={sub} size="display" center id="cta-heading" />
+    <div class="btn-row reveal">
+      <LineButton message="สวัสดีครับ อยากขอใบเสนอราคา">ทักแชท LINE</LineButton>
+      <a class="btn btn-glass" href={ROUTES.pricing}>ดูราคาทั้งหมด</a>
+    </div>
+    {
+      showContactBar && (
+        <div class="contact-bar panel reveal">
+          {contactChannels.map(({ label, channel }) => (
+            <div>
+              <small>{label}</small>
+              <ContactValue channel={channel} />
+            </div>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</section>

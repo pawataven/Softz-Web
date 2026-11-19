@@ -1,0 +1,260 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { Image, getImage } from 'astro:assets';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import ContactCta from '../../components/sections/ContactCta.astro';
+import DeviceFrame from '../../components/ui/DeviceFrame.astro';
+import Icon from '../../components/ui/Icon.astro';
+import LineButton from '../../components/ui/LineButton.astro';
+import { ROUTES } from '../../config/routes';
+import { EXTRA_WORK_CATEGORIES } from '../../config/work';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatPrice } from '../../lib/format';
+
+/** One page per case study that has a `detail` block in src/content/work/<slug>.json. */
+export const getStaticPaths = (async () => {
+  const caseStudies = await getCollection('work', ({ data }) => data.detail !== undefined);
+  return caseStudies.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  entry: CollectionEntry<'work'>;
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+const detail = data.detail!;
+
+const itemsTotal = detail.pricing.items.reduce((sum, item) => sum + item.amount, 0);
+if (itemsTotal !== detail.pricing.total) {
+  throw new Error(`work/${entry.id}: pricing items add up to ${itemsTotal}, but total is ${detail.pricing.total}.`);
+}
+
+type Screen = (typeof detail.chapters)[number]['screens'][number];
+const toDevice = (screen: Screen) => ({ kind: screen.kind === 'desktop' ? ('laptop' as const) : ('phone' as const), image: screen.image, alt: screen.alt });
+const packageHref =
+  EXTRA_WORK_CATEGORIES.find((category) => category.id === data.category.id)?.href ?? ROUTES.product(data.category.id);
+// Showcase walkthrough video: the screenshot doubles as its poster, so the frame is filled before the video loads.
+const showcaseVideo = detail.showcase.video;
+const showcasePoster = showcaseVideo ? (await getImage({ src: detail.showcase.image, width: 1440, format: 'webp' })).src : undefined;
+const share = (amount: number) => Math.round((amount / detail.pricing.total) * 100);
+---
+
+<BaseLayout
+  title={detail.seo.title}
+  description={detail.seo.description}
+  breadcrumbs={[
+    { name: 'ผลงาน', path: ROUTES.work },
+    { name: data.title, path: ROUTES.caseStudy(entry.id) },
+  ]}
+>
+  <!-- Cover: full-bleed photo under the transparent nav, title on the bottom-left. -->
+  <section class="cs-cover" data-cs-cover>
+    <Image
+      src={detail.cover.image}
+      alt={detail.cover.alt}
+      class="cs-cover-img"
+      style={`--cover-focus: ${detail.cover.mobileFocus}`}
+      loading="eager"
+      fetchpriority="high"
+      layout="full-width"
+    />
+    <div class="cs-cover-shade" aria-hidden="true"></div>
+    <div class="container-page cs-cover-inner">
+      <a class="cs-back" href={ROUTES.work}><span aria-hidden="true">←</span> ผลงานทั้งหมด</a>
+      <div class="cs-cover-foot">
+        <div class="cs-cover-text">
+          <span class="label">{detail.cover.eyebrow}</span>
+          <h1 class="cs-title">{data.title}</h1>
+          <p class="cs-sub">{detail.cover.subtitle}</p>
+        </div>
+        <div class="cs-cover-actions">
+          {
+            data.liveUrl && (
+              <a class="btn btn-primary" href={data.liveUrl} target="_blank" rel="noopener">
+                เปิดเว็บไซต์จริง ↗
+              </a>
+            )
+          }
+          <a class="btn btn-glass" href="#price">ดูสรุปราคา</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The site itself, as large as the screen allows, growing in as it scrolls up. -->
+  <section class="cs-intro">
+    <div class="container-page">
+      <div class="cs-grow" data-cs-grow>
+        {
+          showcaseVideo ? (
+            <div class="laptop">
+              <div class="lid">
+                <div class="screen">
+                  <video class="cs-video" autoplay muted loop playsinline preload="auto" poster={showcasePoster} aria-label={`วิดีโอการใช้งาน ${detail.showcase.alt}`} data-cs-video>
+                    {showcaseVideo.webm && <source src={showcaseVideo.webm} type="video/webm" />}
+                    <source src={showcaseVideo.mp4} type="video/mp4" />
+                  </video>
+                </div>
+              </div>
+              <div class="base" />
+            </div>
+          ) : (
+            <DeviceFrame device={toDevice(detail.showcase)} />
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-story">
+    <div class="container-page">
+      <h2 class="cs-statement reveal">
+        {detail.statement.map((line) => <span>{line}</span>)}
+      </h2>
+      <p class="cs-story-text reveal">{detail.story}</p>
+      <dl class="cs-facts stagger reveal">
+        {
+          detail.facts.map((fact) => (
+            <div>
+              <dt>{fact.label}</dt>
+              <dd>{fact.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  {
+    detail.chapters.map((chapter, index) => {
+      const [desktop, mobile] = chapter.screens;
+      return (
+        <section class:list={['cs-chapter', { flip: index % 2 === 1 }]}>
+          <div class="container-page cs-chapter-grid">
+            <div class="cs-chapter-art">
+              <div class="cs-chapter-desktop reveal">
+                <DeviceFrame device={toDevice(desktop)} />
+              </div>
+              {mobile && (
+                <div class="cs-chapter-mobile reveal" data-cs-speed="0.12">
+                  <DeviceFrame device={toDevice(mobile)} />
+                </div>
+              )}
+            </div>
+            <div class="cs-chapter-text reveal">
+              <span class="label">{chapter.label}</span>
+              <h2>{chapter.title}</h2>
+              <p>{chapter.body}</p>
+            </div>
+          </div>
+        </section>
+      );
+    })
+  }
+
+  <section class="cs-phones">
+    <div class="container-page">
+      <div class="cs-head reveal">
+        <span class="label">{detail.mobileStrip.label}</span>
+        <h2>{detail.mobileStrip.title}</h2>
+        <p>{detail.mobileStrip.body}</p>
+      </div>
+      <div class="cs-phone-row">
+        {
+          detail.mobileStrip.screens.map((screen, index) => (
+            <div class="cs-phone reveal" data-cs-speed={index % 2 === 1 ? '0.1' : undefined}>
+              <DeviceFrame device={toDevice(screen)} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-photos">
+    <div class="container-page">
+      <div class="cs-head reveal">
+        <span class="label">{detail.photos.label}</span>
+        <h2>{detail.photos.title}</h2>
+        <p>{detail.photos.body}</p>
+      </div>
+      {/*
+        Split gallery: on desktop the first two photos fill the screen side by side and stay put; the middle photos
+        fade in full height over one half at a time (left, right, left…), and the last one closes the sequence as a
+        small framed photo on the right before the page scrolls on (scripts/case-study.ts). On phones, with reduced
+        motion or without JS it is a plain collage.
+      */}
+      <div class="cs-split" data-cs-split style={`--steps: ${detail.photos.items.length - 2}`}>
+        <div class="cs-split-stage cs-collage">
+          {
+            detail.photos.items.map((photo, index) => {
+              const isLast = index === detail.photos.items.length - 1;
+              const slot =
+                index === 0 ? 'left-base' : index === 1 ? 'right-base' : isLast ? 'final' : (index - 2) % 2 === 0 ? 'left' : 'right';
+              return (
+                <figure class="cs-photo" data-slot={slot}>
+                  <Image src={photo.image} alt={photo.alt} widths={[480, 800, 1200, 1600]} sizes="(max-width: 767px) 100vw, 50vw" />
+                </figure>
+              );
+            })
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-price tone" id="price">
+    <div class="container-page cs-price-grid">
+      <div class="cs-price-head reveal">
+        <span class="label">PRICE SUMMARY</span>
+        <h2>{detail.pricing.title}</h2>
+        <p>{detail.pricing.intro}</p>
+        <div class="chips">
+          {detail.stack.map((tool) => <span class="tag tag-gray">{tool}</span>)}
+        </div>
+      </div>
+      <div class="cs-price-table reveal">
+        <ol class="cs-price-list">
+          {
+            detail.pricing.items.map((item) => (
+              <li>
+                <div class="cs-price-row">
+                  <div>
+                    <b>{item.name}</b>
+                    <p>{item.detail}</p>
+                  </div>
+                  <span class="cs-amount">{formatPrice(item.amount)}</span>
+                </div>
+                <div class="cs-bar" aria-hidden="true">
+                  <i style={`width: ${share(item.amount)}%`} />
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+        <div class="cs-total">
+          <span>{detail.pricing.totalLabel}</span>
+          <b>
+            {formatPrice(detail.pricing.total)} <small>บาท</small>
+          </b>
+        </div>
+        <ul class="cs-notes">
+          {detail.pricing.notes.map((note) => <li>{note}</li>)}
+        </ul>
+        <div class="btn-row">
+          <LineButton message={data.cta.lineMessage}>{data.cta.label}</LineButton>
+          <a class="btn btn-glass" href={packageHref}>
+            ดูแพ็กเกจเว็บไซต์ <Icon name="arrow" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactCta sub="อยากได้เว็บแบบนี้ให้ธุรกิจคุณ ทักมาคุยได้เลย" showContactBar={false} />
+
+  <script>
+    import '../../scripts/case-study';
+  </script>
+</BaseLayout>
